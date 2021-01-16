@@ -1,6 +1,5 @@
 # Wake-On-LAN
 
-import socket
 from resources.lib import ping
 import os
 import sys
