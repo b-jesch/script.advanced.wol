@@ -22,7 +22,6 @@ def main(is_autostart=False):
     # Read Settings
     language = addon.getLocalizedString
     notify = xbmcgui.Dialog().notification
-    dialog_bg = xbmcgui.DialogProgressBG
 
     # basic settings
     macAddress = addon.getSetting("macAddress")
