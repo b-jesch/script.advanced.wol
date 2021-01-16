@@ -24,9 +24,3 @@ You can also pass the Host/IP and MAC-Address of the remote device to the script
 In the advanced settings you can also set the addon to continue sending WOL packets with a configurable delay.
 This is useful, when the remote device or NAS is kept awake, as long as WOL-packets are received.
 Normally the continuous WOL-packets will also continue after Kodi has returned from standby/sleep/suspend, but there is an option to turn this behaviour off.
-
-If for any reason the check of a successful wake-up via ping is not possible or fails on your system, please note the following:
-
-  - Kodi must be run as Administrator on Windows / with root rights on Linux for ping-based host-up checks to work.
-  - If this is not possible or it still fails, you can disable ping-based host-up checks in the advanced addon-settings.
-    This allows you to set a fixed timespan, after which the addon just assumes, that the remote host is awake (to display success-notifies, launch other commands, etc.).
