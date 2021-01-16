@@ -58,9 +58,9 @@ def main(is_autostart=False):
 
     # Set Icons
     iconDir = os.path.join(xbmcvfs.translatePath(addon.getAddonInfo('path')), 'resources', 'icons')
-    iconConnect = os.path.join(iconDir, 'server_connect.png')
+    iconConnect = os.path.join(iconDir, 'server.png')
     iconError = os.path.join(iconDir, 'server_error.png')
-    iconSuccess = os.path.join(iconDir, 'server.png')
+    iconSuccess = os.path.join(iconDir, 'server_connect.png')
 
     launchcommand = False
     delaycommand = False
