@@ -1,0 +1,178 @@
+# XBMC Media Center language file
+# Addon Name: Advanced Wake On Lan
+# Addon id: script.advanced.wol
+# Addon version: 3.0.0
+# Addon Provider: Birger Jesch, forked from mandark
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC-Addons\n"
+"Language-Team: LANGUAGE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgctxt "#51000"
+msgid "Basic settings"
+msgstr ""
+
+msgctxt "#51001"
+msgid "Ethernet MAC address"
+msgstr ""
+
+msgctxt "#51002"
+msgid "IP address or hostname"
+msgstr ""
+
+msgctxt "#54000"
+msgid "Autostart"
+msgstr ""
+
+msgctxt "#54001"
+msgid "NOTE: Changing these settings requires a Kodi Restart to take effect!"
+msgstr ""
+
+msgctxt "#54010"
+msgid "Wake on Kodi Launch"
+msgstr ""
+
+msgctxt "#54011"
+msgid "Activate 'wake on launch'"
+msgstr ""
+
+msgctxt "#54012"
+msgid "Delay WOL signal on 'wake on launch' (in seconds)"
+msgstr ""
+
+msgctxt "#54020"
+msgid "Also wake after Kodi returns from standby"
+msgstr ""
+
+msgctxt "#54021"
+msgid "Activate 'wake after standby'"
+msgstr ""
+
+msgctxt "#54022"
+msgid "Delay WOL signal on 'wake after standby' (in seconds)"
+msgstr ""
+
+msgctxt "#54030"
+msgid "Update libraries after successful 'wake on launch' and 'wake after standby'"
+msgstr ""
+
+msgctxt "#54031"
+msgid "Update video library"
+msgstr ""
+
+msgctxt "#54032"
+msgid "Update music library"
+msgstr ""
+
+msgctxt "#54033"
+msgid "Delay library updates (in seconds)"
+msgstr ""
+
+msgctxt "#52000"
+msgid "Notifications"
+msgstr ""
+
+msgctxt "#52001"
+msgid "Enable launch notification"
+msgstr ""
+
+msgctxt "#52002"
+msgid "Enable ping or waiting counter notifications"
+msgstr ""
+
+msgctxt "#52003"
+msgid "Enable host up success/failure notification"
+msgstr ""
+
+msgctxt "#52004"
+msgid "Enable error notifications"
+msgstr ""
+
+msgctxt "#53000"
+msgid "Advanced settings"
+msgstr ""
+
+msgctxt "#53010"
+msgid "Host up check"
+msgstr ""
+
+msgctxt "#53011"
+msgid "Ping timeout for host up check (in seconds)"
+msgstr ""
+
+msgctxt "#53012"
+msgid "Enable host up check via ping..."
+msgstr ""
+
+msgctxt "#53013"
+msgid "...and simply assume wake up after this timespan (in seconds)"
+msgstr ""
+
+msgctxt "#53020"
+msgid "Continuous WOL signals"
+msgstr ""
+
+msgctxt "#53021"
+msgid "Send continuous WOL packets"
+msgstr ""
+
+msgctxt "#53022"
+msgid "Delay between packets (in seconds)"
+msgstr ""
+
+msgctxt "#53023"
+msgid "Continue sending after Kodi returns from standby"
+msgstr ""
+
+msgctxt "#60000"
+msgid "Waking up %s..."
+msgstr ""
+
+msgctxt "#60001"
+msgid "Waiting for %s to wake up..."
+msgstr ""
+
+msgctxt "#60002"
+msgid "%s of %s seconds"
+msgstr ""
+
+msgctxt "#60003"
+msgid "%s did not wake up!"
+msgstr ""
+
+msgctxt "#60004"
+msgid "%s is awake!"
+msgstr ""
+
+msgctxt "#60005"
+msgid "ERROR on host up check"
+msgstr ""
+
+msgctxt "#60006"
+msgid "Host %s could not be resolved."
+msgstr ""
+
+msgctxt "#60007"
+msgid "Launching command..."
+msgstr ""
+
+msgctxt "#60008"
+msgid "WOL packets will continue with a delay of %s seconds."
+msgstr ""
+
+msgctxt "#60009"
+msgid "Kodi must be run as Administrator for ping based host up checks to work. You can disable the 'host up check via ping' in the addon settings to prevent this error."
+msgstr ""
+
+msgctxt "#60010"
+msgid "Kodi must be run as root for ping based host up checks to work. You can disable the 'host up check via ping' in the addon settings to prevent this error."
+msgstr ""
+
+msgctxt "#60011"
+msgid "%s should be awake now!"
+msgstr ""
