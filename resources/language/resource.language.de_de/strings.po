@@ -15,7 +15,7 @@ msgstr ""
 
 msgctxt "#51000"
 msgid "Basic settings"
-msgstr "Allgemein"
+msgstr "Allgemeine Einstellungen"
 
 msgctxt "#51001"
 msgid "Ethernet MAC address"
@@ -115,7 +115,7 @@ msgstr "...und erwarte Aufwecken nach dieser Zeitspanne (Sekunden)"
 
 msgctxt "#53020"
 msgid "Continuous WOL signals"
-msgstr "Ständige WOL-Signale"
+msgstr "Kontinuierliche WOL-Signale"
 
 msgctxt "#53021"
 msgid "Send continuous WOL packets"
@@ -127,7 +127,7 @@ msgstr "Verzögerung zwischen den Paketen (Sekunden)"
 
 msgctxt "#53023"
 msgid "Continue sending after Kodi returns from standby"
-msgstr "Sende kontinuierlich nach der Rückkehr aus dem Standby"
+msgstr "Sende dauerhaft nach der Rückkehr aus dem Standby"
 
 msgctxt "#60000"
 msgid "Waking up %s..."
