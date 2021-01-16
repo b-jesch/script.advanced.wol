@@ -8,7 +8,7 @@
     <extension point="xbmc.addon.metadata">
         <summary lang="en">Wake up a sleeping device (e.g. NAS, Server, etc.) using Wake-On-Lan</summary>
         <description lang="en">Sends a WOL magic packet to a remote device using its ethernet MAC address and displays a notification if and when the device is available.</description>
-        <disclaimer lang="en">Uses XBMC-builtin-command &quot;WakeOnLan&quot; to send the wakeup-packet, and the GNU-licensed &quot;python-ping&quot;-script to determine the status of the server. Please see the file &quot;ping.py&quot; for infos on the latter one.</disclaimer>
+        <disclaimer lang="en">Uses Kodi builtin command &quot;WakeOnLan&quot; to send the wakeup packet, and the GNU-licensed &quot;python-ping&quot; script to determine the status of the server. Please see the file &quot;ping.py&quot; for infos on the latter one.</disclaimer>
         <platform>all</platform>
     </extension>
 </addon>

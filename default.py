@@ -37,7 +37,7 @@ def main(is_autostart=False):
     # advanced settings
     pingTimeout = int(addon.getSetting("pingTimeout"))
     hostupWaitTime = int(addon.getSetting("hostupWaitTime"))
-    enablePingHostupCheck = addon.getSetting("enablePingHostupCheck")
+    disablePingHostupCheck = addon.getSetting("disablePingHostupCheck")
     continuousWol = addon.getSetting("continuousWol")
     continuousWolDelay = int(addon.getSetting("continuousWolDelay"))
     continuousWolAfterStandby = addon.getSetting("continuousWolAfterStandby")
@@ -87,7 +87,7 @@ def main(is_autostart=False):
 
     # Determine wakeup-success
     hostupConfirmed = False
-    if enablePingHostupCheck == "true":
+    if disablePingHostupCheck == "true":
         # with this setting, we just wait for "hostupWaitTime" seconds and assume a successful wakeup then.
         timecount = 1
         while timecount <= hostupWaitTime:
