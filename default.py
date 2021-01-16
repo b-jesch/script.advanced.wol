@@ -23,6 +23,7 @@ def main(is_autostart=False):
     # Read Settings
     language = addon.getLocalizedString
     notify = xbmcgui.Dialog().notification
+    dialog_bg = xbmcgui.DialogProgressBG
 
     # basic settings
     macAddress = addon.getSetting("macAddress")
@@ -32,7 +33,6 @@ def main(is_autostart=False):
     enableLaunchNotifies = addon.getSetting("enableLaunchNotifies")
     enablePingCounterNotifies = addon.getSetting("enablePingCounterNotifies")
     enableHostupNotifies = addon.getSetting("enableHostupNotifies")
-    enableErrorNotifies = addon.getSetting("enableErrorNotifies")
 
     # advanced settings
     pingTimeout = int(addon.getSetting("pingTimeout"))
@@ -90,60 +90,53 @@ def main(is_autostart=False):
     if disablePingHostupCheck == "true":
         # with this setting, we just wait for "hostupWaitTime" seconds and assume a successful wakeup then.
         timecount = 1
+
+        dbg = xbmcgui.DialogProgressBG()
+        dbg.create(language(60001) % hostOrIp, language(60002) % (timecount, hostupWaitTime))
         while timecount <= hostupWaitTime:
             xbmc.sleep(1000)
             if enablePingCounterNotifies == "true":
-                notify(language(60001) % hostOrIp, language(60002) % (timecount, hostupWaitTime),
-                       time=1000, icon=iconConnect)
+                dbg.update(timecount * 100 // hostupWaitTime, language(60001) % hostOrIp,
+                           language(60002) % (timecount, hostupWaitTime))
             timecount = timecount + 1
+        dbg.close()
+
         if enableHostupNotifies == "true":
             notify(addon_name, language(60011) % hostOrIp, icon=iconSuccess)
+
         hostupConfirmed = True
     else:
         # otherwise we determine the success by pinging (default behaviour)
-        delay = None
-        try:
-            timecount = 1
-            while timecount <= pingTimeout:
-                delay = ping.do_one(hostOrIp, 1)
-                if delay is None:
-                    if enablePingCounterNotifies == "true":
-                        notify(language(60001) % hostOrIp, language(60002) % (timecount, pingTimeout),
-                               time=1000, icon=iconConnect)
-                    timecount = timecount + 1
-                else:
-                    break
-            if delay is None:
-                xbmc.sleep(1000)
-                if enableHostupNotifies == "true":
-                    notify(addon_name, language(60003) % hostOrIp, icon=iconError)
-            else:
-                xbmc.sleep(1000)
-                if enableHostupNotifies == "true":
-                    notify(addon_name, language(60004) % hostOrIp, icon=iconSuccess)
-                hostupConfirmed = True
+        success = False
+        timecount = int(time.time())
+        now = timecount
 
-        except socket.gaierror as e:
-            xbmc.log('[{} {}]: {}'.format(addon_id, version, e), xbmc.LOGERROR)
-            notify(language(60005), language(60006) % hostOrIp, time=10000, icon=iconError)
-        except PermissionError as e:
-            xbmc.log('[{} {}]: {}'.format(addon_id, version, e), xbmc.LOGERROR)
-            if enablePingCounterNotifies.lower() == "true":
-                if sys.platform == 'win32':
-                    notify(language(60005), language(60009), time=20000, icon=iconError)
-                elif sys.platform == 'linux2':
-                    notify(language(60005), language(60010), time=20000, icon=iconError)
-                else:
-                    notify(language(60005), str(e), time=20000, icon=iconError)
-        except socket.error as e:
-            xbmc.log('[{} {}]: {}'.format(addon_id, version, e), xbmc.LOGERROR)
-            notify(language(60005), str(e), time=20000, icon=iconError)
+        dbg = xbmcgui.DialogProgressBG()
+        dbg.create(language(60001) % hostOrIp, language(60002) % (now - timecount, pingTimeout))
+        while now - timecount <= pingTimeout:
+            success = ping.ping_ip(hostOrIp)
+            if not success:
+                if enablePingCounterNotifies == "true":
+                    dbg.update((now - timecount) * 100 // pingTimeout, language(60001) % hostOrIp,
+                               language(60002) % (now - timecount, hostupWaitTime))
+                now = int(time.time())
+            else:
+                break
+        dbg.close()
+
+        if not success:
+            if enableHostupNotifies == "true":
+                notify(addon_name, language(60003) % hostOrIp, icon=iconError)
+        else:
+            if enableHostupNotifies == "true":
+                notify(addon_name, language(60004) % hostOrIp, icon=iconSuccess)
+            hostupConfirmed = True
 
     # Things to perform after successful wake-up
     if hostupConfirmed:
 
         # Launch additional command passed with parameters, if it should be delayed to after successful wakeup
-        if (launchcommand == True) & (delaycommand == True):
+        if (launchcommand is True) & (delaycommand is True):
             if enableHostupNotifies == "true":
                 notify(language(60004) % hostOrIp, language(60007), icon=iconSuccess)
             xbmc.sleep(1000)

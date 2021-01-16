@@ -58,7 +58,7 @@ msgid "Delay WOL signal on 'wake after standby' (in seconds)"
 msgstr "WOL Signal bei 'Wake-Up nach Standby' verzögern (Sekunden)"
 
 msgctxt "#54030"
-msgid "Update libraries after successful 'wake on launch' and 'wake after standby'"
+msgid "Update libraries after 'wake on launch/after standby'"
 msgstr "Bibliotheken nach erfolgreichem Aufwecken aktualisieren"
 
 msgctxt "#54031"
@@ -138,24 +138,16 @@ msgid "Waiting for %s to wake up..."
 msgstr "Warte für %s zum Aufwecken"
 
 msgctxt "#60002"
-msgid "%s of %s seconds"
-msgstr "%s von %s Sekunden"
+msgid "%s of %s seconds left"
+msgstr "%s von %s Sekunden vergangen"
 
 msgctxt "#60003"
-msgid "%s did not wake up!"
-msgstr "%s wacht nicht auf!"
+msgid "%s did not wake up..."
+msgstr "%s wacht nicht auf..."
 
 msgctxt "#60004"
-msgid "%s is awake!"
-msgstr "%s ist wach!"
-
-msgctxt "#60005"
-msgid "ERROR on host up check"
-msgstr "Fehler während des Host Up Tests"
-
-msgctxt "#60006"
-msgid "Host %s could not be resolved."
-msgstr "Host %s wird nicht gefunden."
+msgid "%s is awake"
+msgstr "%s ist verfügbar"
 
 msgctxt "#60007"
 msgid "Launching command..."
@@ -165,14 +157,6 @@ msgctxt "#60008"
 msgid "WOL packets will continue with a delay of %s seconds."
 msgstr "WOL-Pakete werden fortlaufend mit einer Verzögerung von %s Sekunden gesendet."
 
-msgctxt "#60009"
-msgid "Kodi must be run as Administrator for ping based host up checks to work. You can disable the 'host up check via ping' in the addon settings to prevent this error."
-msgstr "Kodi muss als Administrator ausgeführt werden, damit die pingbasierte Host-Up-Prüfung funktioniert. Sie müssen die 'Host-Up-Prüfung über Ping' in den Addon-Einstellungen deaktivieren, um diesen Fehler zu verhindern."
-
-msgctxt "#60010"
-msgid "Kodi must be run as root for ping based host up checks to work. You can disable the 'host up check via ping' in the addon settings to prevent this error."
-msgstr "Kodi muss als Root ausgeführt werden, damit die ping-basierte Host-Up-Prüfung funktioniert. Sie können die 'Host-Up-Prüfung über Ping' in den Addon-Einstellungen deaktivieren, um diesen Fehler zu verhindern."
-
 msgctxt "#60011"
 msgid "%s should be awake now!"
-msgstr "%s sollte jetzt wach sein!"
+msgstr "%s sollte jetzt verfügbar sein!"

@@ -24,17 +24,16 @@
 		<setting id="enableLaunchNotifies" type="bool" label="52001" default="true" />
 		<setting id="enablePingCounterNotifies" type="bool" label="52002" default="true" />
 		<setting id="enableHostupNotifies" type="bool" label="52003" default="true" />
-		<setting id="enableErrorNotifies" type="bool" label="52004" default="true" />
 	</category>
 	<category label="53000">
 		<setting id="separator" type="lsep" label="53010"/>
-		<setting id="pingTimeout" type="labelenum" label="53011" values="10|20|30|40|50|60|120" default="30" enable="eq(1,false)" />
-		<setting id="disablePingHostupCheck" type="bool" label="53012" default="true" />
-		<setting id="hostupWaitTime" type="labelenum" label="53013" values="10|20|30|40|50|60|120" default="30" enable="eq(-1,true)" />
+		<setting id="pingTimeout" type="labelenum" label="53011" values="10|20|30|40|50|60|120|180|240" default="30" enable="eq(1,false)" />
+		<setting id="disablePingHostupCheck" type="bool" label="53012" default="false" />
+		<setting id="hostupWaitTime" type="labelenum" label="53013" values="10|20|30|40|50|60|120|180|240" default="30" enable="eq(-1,true)" />
 		<setting type="sep"/>
 		<setting id="separator" type="lsep" label="53020"/>
 		<setting id="continuousWol" type="bool" label="53021" default="false" />
-		<setting id="continuousWolDelay" type="labelenum" label="53022" values="10|20|30|40|50|60|120" default="30" enable="eq(-1,true)" />
+		<setting id="continuousWolDelay" type="labelenum" label="53022" values="10|20|30|40|50|60|120|180|240" default="30" enable="eq(-1,true)" />
 		<setting id="continuousWolAfterStandby" type="bool" label="53023" default="true" enable="eq(-2,true)" />
 	</category>
 </settings>

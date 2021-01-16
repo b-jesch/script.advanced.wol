@@ -58,7 +58,7 @@ msgid "Delay WOL signal on 'wake after standby' (in seconds)"
 msgstr ""
 
 msgctxt "#54030"
-msgid "Update libraries after successful 'wake on launch' and 'wake after standby'"
+msgid "Update libraries after 'wake on launch/after standby'"
 msgstr ""
 
 msgctxt "#54031"
@@ -138,23 +138,15 @@ msgid "Waiting for %s to wake up..."
 msgstr ""
 
 msgctxt "#60002"
-msgid "%s of %s seconds"
+msgid "%s of %s seconds left"
 msgstr ""
 
 msgctxt "#60003"
-msgid "%s did not wake up!"
+msgid "%s did not wake up..."
 msgstr ""
 
 msgctxt "#60004"
-msgid "%s is awake!"
-msgstr ""
-
-msgctxt "#60005"
-msgid "ERROR on host up check"
-msgstr ""
-
-msgctxt "#60006"
-msgid "Host %s could not be resolved."
+msgid "%s is awake"
 msgstr ""
 
 msgctxt "#60007"
@@ -163,14 +155,6 @@ msgstr ""
 
 msgctxt "#60008"
 msgid "WOL packets will continue with a delay of %s seconds."
-msgstr ""
-
-msgctxt "#60009"
-msgid "Kodi must be run as Administrator for ping based host up checks to work. You can disable the 'host up check via ping' in the addon settings to prevent this error."
-msgstr ""
-
-msgctxt "#60010"
-msgid "Kodi must be run as root for ping based host up checks to work. You can disable the 'host up check via ping' in the addon settings to prevent this error."
 msgstr ""
 
 msgctxt "#60011"
