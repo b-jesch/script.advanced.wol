@@ -7,8 +7,11 @@
     <extension point="xbmc.service" library="autostart.py" />
     <extension point="xbmc.addon.metadata">
         <summary lang="en">Wake up a sleeping device (e.g. NAS, Server, etc.) using Wake-On-Lan</summary>
+        <summary lang="de">Weckt ein Gerät (NAS, Server usw.) unter Benutzung von Wake on Lan auf</summary>
         <description lang="en">Sends a WOL magic packet to a remote device using its ethernet MAC address and displays a notification if and when the device is available.</description>
+        <description lang="de">Sendet ein WOL-Magic-Paket an ein entferntes Gerät über dessen Ethernet-MAC-Adresse und zeigt eine Benachrichtigung an, ob und wann das Gerät verfügbar ist.</description>
         <disclaimer lang="en">Uses Kodi builtin command &quot;WakeOnLan&quot; to send the wakeup packet</disclaimer>
+        <disclaimer lang="de">Verwendet den in Kodi eingebauten Befehl &quot;WakeOnLan&quot; zum Senden des Wakeup-Pakets</disclaimer>
         <platform>all</platform>
         <license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
     <forum/>

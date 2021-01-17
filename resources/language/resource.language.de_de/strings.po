@@ -135,7 +135,7 @@ msgstr "Wecke %s..."
 
 msgctxt "#60001"
 msgid "Waiting for %s to wake up..."
-msgstr "Warte für %s zum Aufwecken"
+msgstr "Warte auf Verfügbarkeit von %s..."
 
 msgctxt "#60002"
 msgid "%s of %s seconds left"

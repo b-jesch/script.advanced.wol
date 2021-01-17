@@ -81,7 +81,8 @@ def main(is_autostart=False):
 
     # Send Connection Notification
     if enableLaunchNotifies == "true":
-        notify(addon_name, language(60000) % hostOrIp, icon=iconConnect)
+        notify(addon_name, language(60000) % hostOrIp, time=3000, icon=iconConnect)
+        xbmc.sleep(3000)
 
     # Determine wakeup-success
     hostupConfirmed = False
