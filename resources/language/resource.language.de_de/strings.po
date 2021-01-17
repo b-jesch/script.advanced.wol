@@ -83,7 +83,7 @@ msgstr "Aktiviere Startbenachrichrigung"
 
 msgctxt "#52002"
 msgid "Enable ping or waiting counter notifications"
-msgstr "Aktiviere Ping- oder Wartezählerbenachrichtigungen"
+msgstr "Aktiviere Ping- oder Wartezeitbenachrichtigungen"
 
 msgctxt "#52003"
 msgid "Enable host up success/failure notification"

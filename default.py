@@ -16,6 +16,28 @@ addon_name = addon.getAddonInfo('name')
 version = addon.getAddonInfo('version')
 
 
+class DialogBG(xbmcgui.DialogProgressBG):
+    def __init__(self, heading, message, visible=True):
+        super().__init__()
+
+        self.heading = heading
+        self.message = message
+        self.visible = visible
+
+        if self.visible:
+            self.create(heading, message)
+
+    def bg_progress(self, percent, message=None):
+        if self.visible:
+            if message is not None:
+                self.message = message
+            self.update(percent, self.heading, self.message)
+
+    def bg_close(self):
+        if self.visible:
+            self.close()
+
+
 def main(is_autostart=False):
     xbmc.log('[{} {}]: Starting WOL script'.format(addon_id, version), xbmc.LOGDEBUG)
 
@@ -28,19 +50,19 @@ def main(is_autostart=False):
     hostOrIp = addon.getSetting("hostOrIp")
 
     # notification settings
-    enableLaunchNotifies = addon.getSetting("enableLaunchNotifies")
-    enablePingCounterNotifies = addon.getSetting("enablePingCounterNotifies")
-    enableHostupNotifies = addon.getSetting("enableHostupNotifies")
+    enableLaunchNotifies = True if addon.getSetting("enableLaunchNotifies").lower() == 'true' else False
+    enablePingCounterNotifies = True if addon.getSetting("enablePingCounterNotifies").lower() == 'true' else False
+    enableHostupNotifies = True if addon.getSetting("enableHostupNotifies").lower() == 'true' else False
 
     # advanced settings
     pingTimeout = int(addon.getSetting("pingTimeout"))
     hostupWaitTime = int(addon.getSetting("hostupWaitTime"))
-    disablePingHostupCheck = addon.getSetting("disablePingHostupCheck")
-    continuousWol = addon.getSetting("continuousWol")
+    disablePingHostupCheck = True if addon.getSetting("disablePingHostupCheck").lower() == 'true' else False
+    continuousWol = True if addon.getSetting("continuousWol").lower() == 'true' else False
     continuousWolDelay = int(addon.getSetting("continuousWolDelay"))
-    continuousWolAfterStandby = addon.getSetting("continuousWolAfterStandby")
-    updateVideoLibraryAfterWol = addon.getSetting("updateVideoLibraryAfterWol")
-    updateMusicLibraryAfterWol = addon.getSetting("updateMusicLibraryAfterWol")
+    continuousWolAfterStandby = True if addon.getSetting("continuousWolAfterStandby").lower() == 'true' else False
+    updateVideoLibraryAfterWol = True if addon.getSetting("updateVideoLibraryAfterWol").lower() == 'true' else False
+    updateMusicLibraryAfterWol = True if addon.getSetting("updateMusicLibraryAfterWol").lower() == 'true' else False
     libraryUpdatesDelay = int(addon.getSetting("libraryUpdatesDelay"))
 
     # if the script was called with a 3rd parameter,
@@ -68,7 +90,7 @@ def main(is_autostart=False):
             launchcommand = True
             if str(sys.argv[2]) == 'True':
                 delaycommand = True
-    except:
+    except IndexError:
         pass
 
     # Launch additional command passed with parameters, if it should not be delayed to after successful wakeup
@@ -80,27 +102,25 @@ def main(is_autostart=False):
     xbmc.log('[{} {}]: WakeOnLan signal sent to MAC-Address {}'.format(addon_id, version, macAddress), xbmc.LOGDEBUG)
 
     # Send Connection Notification
-    if enableLaunchNotifies == "true":
+    if enableLaunchNotifies:
         notify(addon_name, language(60000) % hostOrIp, time=3000, icon=iconConnect)
         xbmc.sleep(3000)
 
     # Determine wakeup-success
     hostupConfirmed = False
-    if disablePingHostupCheck == "true":
+    if disablePingHostupCheck:
         # with this setting, we just wait for "hostupWaitTime" seconds and assume a successful wakeup then.
         timecount = 1
 
-        dbg = xbmcgui.DialogProgressBG()
-        dbg.create(language(60001) % hostOrIp, language(60002) % (timecount, hostupWaitTime))
+        dbg = DialogBG(language(60001) % hostOrIp,
+                       language(60002) % (timecount, hostupWaitTime), enablePingCounterNotifies)
         while timecount <= hostupWaitTime:
             xbmc.sleep(1000)
-            if enablePingCounterNotifies == "true":
-                dbg.update(timecount * 100 // hostupWaitTime, language(60001) % hostOrIp,
-                           language(60002) % (timecount, hostupWaitTime))
+            dbg.bg_progress(timecount * 100 // hostupWaitTime, language(60002) % (timecount, hostupWaitTime))
             timecount = timecount + 1
-        dbg.close()
+        dbg.bg_close()
 
-        if enableHostupNotifies == "true":
+        if enableHostupNotifies:
             notify(addon_name, language(60011) % hostOrIp, icon=iconSuccess)
 
         hostupConfirmed = True
@@ -110,25 +130,24 @@ def main(is_autostart=False):
         timecount = int(time.time())
         now = timecount
 
-        dbg = xbmcgui.DialogProgressBG()
-        dbg.create(language(60001) % hostOrIp, language(60002) % (now - timecount, pingTimeout))
+        dbg = DialogBG(language(60001) % hostOrIp,
+                       language(60002) % (now - timecount, pingTimeout), enablePingCounterNotifies)
         while now - timecount <= pingTimeout:
             success = ping.ping_ip(hostOrIp)
             if not success:
-                if enablePingCounterNotifies == "true":
-                    dbg.update((now - timecount) * 100 // pingTimeout, language(60001) % hostOrIp,
-                               language(60002) % (now - timecount, hostupWaitTime))
+                dbg.bg_progress((now - timecount) * 100 // pingTimeout,
+                                language(60002) % (now - timecount, pingTimeout))
                 now = int(time.time())
             else:
                 break
-        dbg.close()
+        dbg.bg_close()
 
-        if not success:
-            if enableHostupNotifies == "true":
+        if enableHostupNotifies:
+            if not success:
                 notify(addon_name, language(60003) % hostOrIp, icon=iconError)
-        else:
-            if enableHostupNotifies == "true":
+            else:
                 notify(addon_name, language(60004) % hostOrIp, icon=iconSuccess)
+        if success:
             hostupConfirmed = True
 
     # Things to perform after successful wake-up
@@ -136,7 +155,7 @@ def main(is_autostart=False):
 
         # Launch additional command passed with parameters, if it should be delayed to after successful wakeup
         if (launchcommand is True) & (delaycommand is True):
-            if enableHostupNotifies == "true":
+            if enableHostupNotifies:
                 notify(language(60004) % hostOrIp, language(60007), icon=iconSuccess)
             xbmc.sleep(1000)
             xbmc.executebuiltin(sys.argv[1])
@@ -144,23 +163,23 @@ def main(is_autostart=False):
         # Initiate XBMC-library-updates, if we are in autostart and it is set in the addon.
         if is_autostart:
 
-            if ((updateVideoLibraryAfterWol == "true") or (updateMusicLibraryAfterWol == "true")) and (
+            if (updateVideoLibraryAfterWol or updateMusicLibraryAfterWol) and (
                     libraryUpdatesDelay > 0):
                 xbmc.sleep(libraryUpdatesDelay * 1000)
 
-            if updateVideoLibraryAfterWol == "true":
+            if updateVideoLibraryAfterWol:
                 xbmc.log('[{} {}]: Initiating Video Library Update'.format(addon_id, version), xbmc.LOGDEBUG)
                 xbmc.executebuiltin('UpdateLibrary("video")')
 
-            if updateMusicLibraryAfterWol == "true":
+            if updateMusicLibraryAfterWol:
                 xbmc.log('[{} {}]: Initiating Music Library Update'.format(addon_id, version), xbmc.LOGDEBUG)
                 xbmc.executebuiltin('UpdateLibrary("music")')
 
     # Continue sending WOL-packets, if configured in the settings
-    if continuousWol == "true":
+    if continuousWol:
         xbmc.sleep(5000)
 
-        if enableLaunchNotifies == "true":
+        if enableLaunchNotifies:
             # Send Notification regarding continuous WOL-packets
             notify(language(53020), language(60008) % continuousWolDelay, icon=iconSuccess)
 
@@ -169,7 +188,7 @@ def main(is_autostart=False):
         previousTime = int(time.time())
         countingSeconds = 0
         while not xbmc.Monitor().abortRequested():
-            if (continuousWolAfterStandby == "false") and (int(time.time()) - previousTime > 5):
+            if (not continuousWolAfterStandby) and (int(time.time()) - previousTime > 5):
                 break
             else:
                 previousTime = int(time.time())
