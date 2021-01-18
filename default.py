@@ -139,6 +139,7 @@ def main(is_autostart=False):
                                 language(60002) % (now - timecount, pingTimeout))
                 now = int(time.time())
             else:
+                hostupConfirmed = True
                 break
         dbg.bg_close()
 
@@ -147,14 +148,12 @@ def main(is_autostart=False):
                 notify(addon_name, language(60003) % hostOrIp, icon=iconError)
             else:
                 notify(addon_name, language(60004) % hostOrIp, icon=iconSuccess)
-        if success:
-            hostupConfirmed = True
 
     # Things to perform after successful wake-up
     if hostupConfirmed:
 
         # Launch additional command passed with parameters, if it should be delayed to after successful wakeup
-        if (launchcommand is True) & (delaycommand is True):
+        if launchcommand and delaycommand:
             if enableHostupNotifies:
                 notify(language(60004) % hostOrIp, language(60007), icon=iconSuccess)
             xbmc.sleep(1000)
