@@ -1,3 +1,4 @@
+# coding=utf-8
 # Wake-On-LAN
 
 import xbmc
