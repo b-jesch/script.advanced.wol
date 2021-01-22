@@ -12,7 +12,7 @@ version = addon.getAddonInfo('version')
 
 autostart = True if addon.getSetting("autostart").lower() == 'true' else False
 wolAfterStandby = True if addon.getSetting("wolAfterStandby").lower() == 'true' else False
-wolDelayOnLaunch = int(addon.getSetting("wolDelayOnLaunch"))
+wolDelayOnLaunch = int(addon.getSetting("wolDelayOnLaunch")) * 1000
 wolDelayAfterStandby = int(addon.getSetting("wolDelayAfterStandby")) * 1000
 
 if autostart:
