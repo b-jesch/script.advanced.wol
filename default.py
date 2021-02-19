@@ -53,6 +53,7 @@ def main(is_autostart=False):
     enableLaunchNotifies = True if addon.getSetting("enableLaunchNotifies").lower() == 'true' else False
     enablePingCounterNotifies = True if addon.getSetting("enablePingCounterNotifies").lower() == 'true' else False
     enableHostupNotifies = True if addon.getSetting("enableHostupNotifies").lower() == 'true' else False
+    delayHostupNotifies = int(addon.getSetting("delayHostupNotifies"))
 
     # advanced settings
     pingTimeout = int(addon.getSetting("pingTimeout"))
@@ -139,6 +140,10 @@ def main(is_autostart=False):
                                 language(60002) % (now - timecount, pingTimeout))
                 now = int(time.time())
             else:
+                if delayHostupNotifies > 0:
+                    dbg.bg_progress((now - timecount) * 100 // pingTimeout,
+                                    language(60005) % delayHostupNotifies)
+                    xbmc.sleep(delayHostupNotifies * 1000)
                 hostupConfirmed = True
                 break
         dbg.bg_close()

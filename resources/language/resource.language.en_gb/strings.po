@@ -73,6 +73,10 @@ msgctxt "#54033"
 msgid "Delay library updates (in seconds)"
 msgstr ""
 
+msgctxt "#54034"
+msgid "Delay host up notification (in seconds)"
+msgstr ""
+
 msgctxt "#52000"
 msgid "Notifications"
 msgstr ""
@@ -147,6 +151,10 @@ msgstr ""
 
 msgctxt "#60004"
 msgid "%s is awake"
+msgstr ""
+
+msgctxt "#60005"
+msgid "Delay for %s seconds"
 msgstr ""
 
 msgctxt "#60007"

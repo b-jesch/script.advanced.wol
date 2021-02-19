@@ -27,7 +27,8 @@
 	</category>
 	<category label="53000">
 		<setting id="separator" type="lsep" label="53010"/>
-		<setting id="pingTimeout" type="labelenum" label="53011" values="10|20|30|40|50|60|120|180|240" default="30" enable="eq(1,false)" />
+		<setting id="pingTimeout" type="labelenum" label="53011" values="10|20|30|40|50|60|120|180|240" default="30" enable="eq(2,false)" />
+		<setting id="delayHostupNotifies" type="labelenum" label="54034" values="0|5|10|15|20|30|45|60" default="0" enable="eq(1,false)" />
 		<setting id="disablePingHostupCheck" type="bool" label="53012" default="false" />
 		<setting id="hostupWaitTime" type="labelenum" label="53013" values="10|20|30|40|50|60|120|180|240" default="30" enable="eq(-1,true)" />
 		<setting type="sep"/>
