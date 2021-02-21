@@ -154,7 +154,7 @@ msgid "%s is awake"
 msgstr ""
 
 msgctxt "#60005"
-msgid "Delay for %s seconds"
+msgid "Ping successful, wait for %s seconds"
 msgstr ""
 
 msgctxt "#60007"

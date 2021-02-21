@@ -154,8 +154,8 @@ msgid "%s is awake"
 msgstr "%s ist verfügbar"
 
 msgctxt "#60005"
-msgid "Delay for %s seconds"
-msgstr "Warte noch %s Sekunden"
+msgid "Ping successful, wait for %s seconds"
+msgstr "Ping erfolgreich, warte noch %s Sekunden"
 
 msgctxt "#60007"
 msgid "Launching command..."

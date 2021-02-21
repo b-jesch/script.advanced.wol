@@ -6,15 +6,12 @@ import platform
 
 
 def ping_ip(current_ip_address, timeout=1):
+    count = 'n' if platform.system().lower() == 'windows' else 'c'
     try:
-        output = subprocess.check_output("ping -{} 1 {}".format('n' if platform.system().lower(
-        ) == "windows" else 'c', current_ip_address), shell=True, universal_newlines=True)
-        if 'unreachable' in output:
-            return False
-        else:
-            return True
-    except Exception as e:
-        print(e)
+        subprocess.run("ping -{} 1 {}".format(count, current_ip_address), shell=True, check=True, timeout=5)
+        return True
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
+        print('Ping returns an error: {}'.format(e))
         return False
 
 
