@@ -140,10 +140,15 @@ def main(is_autostart=False):
                                 language(60002) % (now - timecount, pingTimeout))
                 now = int(time.time())
             else:
+                xbmc.log('last ping was successful, {} secs needed'.format(now - timecount), xbmc.LOGDEBUG)
                 if delayHostupNotifies > 0:
-                    dbg.bg_progress((now - timecount) * 100 // pingTimeout,
-                                    language(60005) % delayHostupNotifies)
-                    xbmc.sleep(delayHostupNotifies * 1000)
+                    xbmc.log('delay wake up notification for {} secs'.format(delayHostupNotifies), xbmc.LOGDEBUG)
+                    steps = delayHostupNotifies
+                    while steps >= 0:
+                        xbmc.sleep(1000)
+                        dbg.bg_progress((delayHostupNotifies - steps) * 100 // delayHostupNotifies,
+                                        language(60005) % (delayHostupNotifies - (delayHostupNotifies - steps)))
+                        steps -= 1
                 hostupConfirmed = True
                 break
         dbg.bg_close()
