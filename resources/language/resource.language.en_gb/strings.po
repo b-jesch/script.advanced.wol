@@ -133,6 +133,10 @@ msgctxt "#53023"
 msgid "Continue sending after Kodi returns from standby"
 msgstr ""
 
+msgctxt "#53024"
+msgid "Send only while Kodi is playing something"
+msgstr ""
+
 msgctxt "#60000"
 msgid "Waking up %s..."
 msgstr ""

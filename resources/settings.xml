@@ -36,5 +36,6 @@
 		<setting id="continuousWol" type="bool" label="53021" default="false" />
 		<setting id="continuousWolDelay" type="labelenum" label="53022" values="10|20|30|40|50|60|120|180|240" default="30" enable="eq(-1,true)" />
 		<setting id="continuousWolAfterStandby" type="bool" label="53023" default="true" enable="eq(-2,true)" />
+	    <setting id="continuousWolOnlyWhilePlaying" type="bool" label="53024" default="false" enable="eq(-3,true)" />
 	</category>
 </settings>
