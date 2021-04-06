@@ -62,6 +62,7 @@ def main(is_autostart=False):
     continuousWol = True if addon.getSetting("continuousWol").lower() == 'true' else False
     continuousWolDelay = int(addon.getSetting("continuousWolDelay"))
     continuousWolAfterStandby = True if addon.getSetting("continuousWolAfterStandby").lower() == 'true' else False
+    continuousWolOnlyWhilePlaying = True if addon.getSetting("continuousWolOnlyWhilePlaying").lower() == 'true' else False
     updateVideoLibraryAfterWol = True if addon.getSetting("updateVideoLibraryAfterWol").lower() == 'true' else False
     updateMusicLibraryAfterWol = True if addon.getSetting("updateMusicLibraryAfterWol").lower() == 'true' else False
     libraryUpdatesDelay = int(addon.getSetting("libraryUpdatesDelay"))
@@ -203,10 +204,12 @@ def main(is_autostart=False):
                 previousTime = int(time.time())
                 xbmc.sleep(1000)
                 if countingSeconds == continuousWolDelay:
-                    xbmc.executebuiltin('WakeOnLan("%s")' % macAddress)
-                    xbmc.log('[{} {}]: WakeOnLan signal sent to MAC-Address {}'.format(addon_id, version, macAddress),
-                             xbmc.LOGDEBUG)
-                    countingSeconds = 0
+
+                    if (not continuousWolOnlyWhilePlaying) or xbmc.Player().isPlaying():
+                        xbmc.executebuiltin('WakeOnLan("%s")' % macAddress)
+                        xbmc.log('[{} {}]: WakeOnLan signal sent to MAC-Address {}'.format(addon_id, version, macAddress),
+                                xbmc.LOGDEBUG)
+                        countingSeconds = 0
                 else:
                     countingSeconds += 1
 
