@@ -146,7 +146,7 @@ msgid "Waiting for %s to wake up..."
 msgstr "Warte auf Verfügbarkeit von %s..."
 
 msgctxt "#60002"
-msgid "%s of %s seconds left"
+msgid "%s of %s seconds passed"
 msgstr "%s von %s Sekunden vergangen"
 
 msgctxt "#60003"
