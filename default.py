@@ -136,8 +136,8 @@ def main(is_autostart=False):
                        language(60002) % (now - timecount, pingTimeout), enablePingCounterNotifies)
         while now - timecount <= pingTimeout:
             success = ping.ping_ip(hostOrIp)
+            now = int(time.time())
             if not success:
-                now = int(time.time())
                 dbg.bg_progress((now - timecount) * 100 // pingTimeout,
                                 language(60002) % (now - timecount, pingTimeout))
             else:
