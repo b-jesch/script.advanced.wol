@@ -137,9 +137,9 @@ def main(is_autostart=False):
         while now - timecount <= pingTimeout:
             success = ping.ping_ip(hostOrIp)
             if not success:
+                now = int(time.time())
                 dbg.bg_progress((now - timecount) * 100 // pingTimeout,
                                 language(60002) % (now - timecount, pingTimeout))
-                now = int(time.time())
             else:
                 xbmc.log('last ping was successful, {} secs needed'.format(now - timecount), xbmc.LOGDEBUG)
                 if delayHostupNotifies > 0:
