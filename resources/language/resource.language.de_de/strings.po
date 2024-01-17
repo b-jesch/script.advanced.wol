@@ -1,8 +1,8 @@
 # XBMC Media Center language file
-# Addon Name: Advanced Wake On Lan
+# Addon Name: Advanced WOL NG
 # Addon id: script.advanced.wol
-# Addon version: 3.0.0
-# Addon Provider: Birger Jesch, forked from mandark
+# Addon version: 4.0.0+matrix
+# Addon Provider: Birger Jesch
 msgid ""
 msgstr ""
 "Project-Id-Version: XBMC-Addons\n"
@@ -169,10 +169,6 @@ msgctxt "#32203"
 msgid "Enable host up success/failure notification"
 msgstr "Aktiviere Host Up Erfolgs-/Fehlerbenachrichtigung"
 
-msgctxt "#32204"
-msgid "Enable error notifications"
-msgstr "Aktiviere Fehlerbenachrichtigungen"
-
 msgctxt "#32300"
 msgid "Advanced settings"
 msgstr "Erweiterte Einstellungen"
@@ -193,14 +189,6 @@ msgctxt "#32313"
 msgid "...and simply assume wake up after this timespan"
 msgstr "...und erwarte Aufwecken nach dieser Zeitspanne"
 
-msgctxt "#32320"
-msgid "Continuous WOL signals"
-msgstr "Kontinuierliche WOL-Signale"
-
-msgctxt "#32321"
-msgid "Send continuous WOL packets"
-msgstr "Sende dauerhaft WOL-Signale"
-
 msgctxt "#32322"
 msgid "Delay between packets"
 msgstr "Verzögerung zwischen den Paketen"
@@ -208,10 +196,6 @@ msgstr "Verzögerung zwischen den Paketen"
 msgctxt "#32323"
 msgid "Continue sending after Kodi returns from standby"
 msgstr "Sende dauerhaft nach der Rückkehr aus dem Standby"
-
-msgctxt "#32324"
-msgid "Send only while Kodi is playing something"
-msgstr "Sende nur wenn Kodi etwas abspielt"
 
 msgctxt "#32400"
 msgid "Waking up %s..."
@@ -233,21 +217,9 @@ msgctxt "#32404"
 msgid "%s is awake"
 msgstr "%s ist verfügbar"
 
-msgctxt "#32405"
-msgid "Ping successful, wait for %s seconds"
-msgstr "Ping erfolgreich, warte noch %s Sekunden"
-
-msgctxt "#32406"
-msgid "Waiting for %s to wake up..."
-msgstr "Warte auf Aufwecken von %s..."
-
 msgctxt "#32407"
 msgid "Launching command..."
 msgstr "Führe Befehl aus..."
-
-msgctxt "#32408"
-msgid "WOL packets will continue with a delay of %s seconds."
-msgstr "WOL-Pakete werden fortlaufend mit einer Verzögerung von %s Sekunden gesendet."
 
 msgctxt "#32411"
 msgid "Device(s) should be awake now!"

@@ -1,8 +1,8 @@
 # XBMC Media Center language file
-# Addon Name: Advanced Wake On Lan
+# Addon Name: Advanced WOL NG
 # Addon id: script.advanced.wol
-# Addon version: 3.0.0
-# Addon Provider: Birger Jesch, forked from mandark
+# Addon version: 4.0.0+matrix
+# Addon Provider: Birger Jesch
 msgid ""
 msgstr ""
 "Project-Id-Version: XBMC-Addons\n"
@@ -169,10 +169,6 @@ msgctxt "#32203"
 msgid "Enable host up success/failure notification"
 msgstr ""
 
-msgctxt "#32204"
-msgid "Enable error notifications"
-msgstr ""
-
 msgctxt "#32300"
 msgid "Advanced settings"
 msgstr ""
@@ -191,26 +187,6 @@ msgstr ""
 
 msgctxt "#32313"
 msgid "...and simply assume wake up after this timespan"
-msgstr ""
-
-msgctxt "#32320"
-msgid "Continuous WOL signals"
-msgstr ""
-
-msgctxt "#32321"
-msgid "Send continuous WOL packets"
-msgstr ""
-
-msgctxt "#32322"
-msgid "Delay between packets"
-msgstr ""
-
-msgctxt "#32323"
-msgid "Continue sending after Kodi returns from standby"
-msgstr ""
-
-msgctxt "#32324"
-msgid "Send only while Kodi is playing something"
 msgstr ""
 
 msgctxt "#32400"
@@ -233,20 +209,8 @@ msgctxt "#32404"
 msgid "%s is awake"
 msgstr ""
 
-msgctxt "#32405"
-msgid "Ping successful, wait for %s seconds"
-msgstr ""
-
-msgctxt "#32406"
-msgid "Waiting for %s to wake up..."
-msgstr ""
-
 msgctxt "#32407"
 msgid "Launching command..."
-msgstr ""
-
-msgctxt "#32408"
-msgid "WOL packets will continue with a delay of %s seconds."
 msgstr ""
 
 msgctxt "#32411"
