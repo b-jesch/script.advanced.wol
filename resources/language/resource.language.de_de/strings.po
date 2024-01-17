@@ -198,28 +198,24 @@ msgid "Continue sending after Kodi returns from standby"
 msgstr "Sende dauerhaft nach der Rückkehr aus dem Standby"
 
 msgctxt "#32400"
-msgid "Waking up %s..."
-msgstr "Wecke %s..."
+msgid "Waking up %s"
+msgstr "Wecke %s"
 
 msgctxt "#32401"
-msgid "Waiting for device(s) to wake up..."
-msgstr "Warte auf Verfügbarkeit der Geräte..."
+msgid "Waiting for device(s) to wake up"
+msgstr "Warte auf Verfügbarkeit der Geräte"
 
 msgctxt "#32402"
 msgid "%s of %s seconds passed"
 msgstr "%s von %s Sekunden vergangen"
 
 msgctxt "#32403"
-msgid "%s did not wake up..."
-msgstr "%s wacht nicht auf..."
+msgid "%s did not wake up"
+msgstr "%s wacht nicht auf"
 
 msgctxt "#32404"
 msgid "%s is awake"
 msgstr "%s ist verfügbar"
-
-msgctxt "#32407"
-msgid "Launching command..."
-msgstr "Führe Befehl aus..."
 
 msgctxt "#32411"
 msgid "Device(s) should be awake now!"

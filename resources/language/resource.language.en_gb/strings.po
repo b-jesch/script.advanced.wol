@@ -190,11 +190,11 @@ msgid "...and simply assume wake up after this timespan"
 msgstr ""
 
 msgctxt "#32400"
-msgid "Waking up %s..."
+msgid "Waking up %s"
 msgstr ""
 
 msgctxt "#32401"
-msgid "Waiting for device(s) to wake up..."
+msgid "Waiting for device(s) to wake up"
 msgstr ""
 
 msgctxt "#32402"
@@ -202,15 +202,11 @@ msgid "%s of %s seconds passed"
 msgstr ""
 
 msgctxt "#32403"
-msgid "%s did not wake up..."
+msgid "%s did not wake up"
 msgstr ""
 
 msgctxt "#32404"
 msgid "%s is awake"
-msgstr ""
-
-msgctxt "#32407"
-msgid "Launching command..."
 msgstr ""
 
 msgctxt "#32411"

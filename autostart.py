@@ -20,7 +20,7 @@ if autostart:
 
     if wolDelayOnLaunch > 0: xbmc.sleep(wolDelayOnLaunch * 1000)
 
-    default.main(True)
+    default.main(autostart=autostart)
 
     if wolAfterStandby:
         previousTime = int(time.time())

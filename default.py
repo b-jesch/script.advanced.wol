@@ -100,12 +100,11 @@ def main(autostart=False):
     else:
 
         # otherwise we determine the success by pinging (default behaviour)
-
         timecount = int(time.time())
         dbg = DialogBG(language(32401),
                        language(32402) % (int(time.time()) - timecount, pingTimeout), enablePingCounterNotifies)
 
-        while len(dev_list) > 0 and int(time.time()) - timecount <= pingTimeout:
+        while len(dev_list) > 0 and int(time.time()) - timecount < pingTimeout:
 
             while int(time.time()) - timecount <= pingTimeout:
                 for dev in dev_list:
@@ -154,4 +153,4 @@ def main(autostart=False):
 
 
 if __name__ == '__main__':
-    main()
+    main(autostart=False)
