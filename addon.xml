@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<addon id="script.advanced.wol" name="Advanced Wake On Lan" version="3.0.9+matrix" provider-name="Birger Jesch, forked from mandark">
+<addon id="script.advanced.wol" name="Advanced WOL NG" version="4.0.0+matrix" provider-name="Birger Jesch">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
     </requires>
     <extension point="xbmc.python.script" library="default.py" />
     <extension point="xbmc.service" library="autostart.py" />
     <extension point="xbmc.addon.metadata">
-        <summary lang="en">Wake up a sleeping device (e.g. NAS, Server, etc.) using Wake-On-Lan</summary>
-        <summary lang="de">Weckt ein Gerät (NAS, Server usw.) unter Benutzung von Wake on Lan auf</summary>
-        <description lang="en">Sends a WOL magic packet to a remote device using its ethernet MAC address and displays a notification if and when the device is available.</description>
-        <description lang="de">Sendet ein WOL-Magic-Paket an ein entferntes Gerät über dessen Ethernet-MAC-Adresse und zeigt eine Benachrichtigung an, ob und wann das Gerät verfügbar ist.</description>
+        <summary lang="en">Wake up to 4 sleeping devices (e.g. NAS, Server, etc.) using builtin WOL</summary>
+        <summary lang="de">Weckt bis zu 4 Geräte (NAS, Server usw.) unter Benutzung des eingebauten WOL auf</summary>
+        <description lang="en">Sends a WOL magic packet to up to four remote devices using its ethernet MAC address and displays a notification if and when the devices are available.</description>
+        <description lang="de">Sendet ein WOL-Magic-Paket an bis zu vier entfernte Geräte über dessen Ethernet-MAC-Adresse und zeigt eine Benachrichtigung an, ob und wann diese Geräte verfügbar sind.</description>
         <disclaimer lang="en">Uses Kodi builtin command &quot;WakeOnLan&quot; to send the wakeup packet</disclaimer>
         <disclaimer lang="de">Verwendet den in Kodi eingebauten Befehl &quot;WakeOnLan&quot; zum Senden des Wakeup-Pakets</disclaimer>
         <platform>all</platform>

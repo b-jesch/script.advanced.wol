@@ -1,28 +1,26 @@
-# script by Dmitry Golovach
-# source https://dmitrygolovach.com/python-ping-ip-address/
-
 import subprocess
 import platform
 
 
-def ping_ip(current_ip_address, timeout=1):
+def ping_ip(current_ip, timeout=1):
     count = 'c'
     wait = ''
     if platform.system().lower() == 'windows':
         count = 'n'
         wait = '-w 1000'
     try:
-        subprocess.run("ping -{} 1 {} {}".format(count, wait, current_ip_address), shell=True, check=True, timeout=timeout)
+        subprocess.run("ping -{} 1 {} {}".format(count, wait, current_ip),
+                       shell=True, check=True, timeout=timeout)
         return True
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
-        print('Ping returns an error: {}'.format(e))
+        print(f"Ping returns an error: {e}")
         return False
 
 
 if __name__ == '__main__':
-    current_ip_address = ['8.8.8.8', '8.8.4.4', '1.2.3.4']
-    for each in current_ip_address:
-        if ping_ip(each):
-            print(f"{each} is available")
+    dns_ips = ['8.8.8.8', '8.8.4.4', '1.2.3.4']
+    for ip in dns_ips:
+        if ping_ip(ip):
+            print(f"{ip} is available")
         else:
-            print(f"{each} is not available")
+            print(f"{ip} is not available")

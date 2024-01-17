@@ -13,162 +13,242 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-msgctxt "#51000"
-msgid "Basic settings"
+msgctxt "#32000"
+msgid "Device list"
 msgstr ""
 
-msgctxt "#51001"
+msgctxt "#32001"
 msgid "Ethernet MAC address"
 msgstr ""
 
-msgctxt "#51002"
-msgid "IP address or hostname"
+msgctxt "#32002"
+msgid "IP address or device name"
 msgstr ""
 
-msgctxt "#54000"
+msgctxt "#32005"
+msgid "send WOL"
+msgstr ""
+
+msgctxt "#32010"
+msgid "Device #1"
+msgstr ""
+
+msgctxt "#32011"
+msgid "Device #2"
+msgstr ""
+
+msgctxt "#32012"
+msgid "Device #3"
+msgstr ""
+
+msgctxt "#320013"
+msgid "Device #4"
+msgstr ""
+
+msgctxt "#32100"
 msgid "Autostart"
 msgstr ""
 
-msgctxt "#54001"
+msgctxt "#32101"
 msgid "NOTE: Changing these settings requires a Kodi Restart!"
 msgstr ""
 
-msgctxt "#54010"
+msgctxt "#32110"
 msgid "Wake on Kodi Launch"
 msgstr ""
 
-msgctxt "#54011"
+msgctxt "#32111"
 msgid "Activate 'wake on launch'"
 msgstr ""
 
-msgctxt "#54012"
-msgid "Delay WOL signal on 'wake on launch' (in seconds)"
+msgctxt "#32112"
+msgid "Delay WOL signal on 'wake on launch'"
 msgstr ""
 
-msgctxt "#54020"
-msgid "Also wake after Kodi returns from standby"
+msgctxt "#32120"
+msgid "Wake on return from Standby"
 msgstr ""
 
-msgctxt "#54021"
+msgctxt "#32121"
 msgid "Activate 'wake after standby'"
 msgstr ""
 
-msgctxt "#54022"
-msgid "Delay WOL signal on 'wake after standby' (in seconds)"
+msgctxt "#32122"
+msgid "Delay WOL signal on 'wake after standby'"
 msgstr ""
 
-msgctxt "#54030"
-msgid "Update libraries after 'wake on launch/after standby'"
+msgctxt "#32130"
+msgid "Update libraries (only auto start)"
 msgstr ""
 
-msgctxt "#54031"
+msgctxt "#32131"
 msgid "Update video library"
 msgstr ""
 
-msgctxt "#54032"
+msgctxt "#32132"
 msgid "Update music library"
 msgstr ""
 
-msgctxt "#54033"
-msgid "Delay library updates (in seconds)"
+msgctxt "#32133"
+msgid "Delay library updates"
 msgstr ""
 
-msgctxt "#54034"
-msgid "Delay host up notification (in seconds)"
+msgctxt "#32134"
+msgid "Delay host up notification"
 msgstr ""
 
-msgctxt "#52000"
+msgctxt "#32150"
+msgid "0 sec (off)"
+msgstr ""
+
+msgctxt "#32151"
+msgid "5 sec"
+msgstr ""
+
+msgctxt "#32152"
+msgid "10 sec"
+msgstr ""
+
+msgctxt "#32153"
+msgid "15 sec"
+msgstr ""
+
+msgctxt "#32154"
+msgid "20 sec"
+msgstr ""
+
+msgctxt "#32155"
+msgid "25 sec"
+msgstr ""
+
+msgctxt "#32156"
+msgid "30 sec"
+msgstr ""
+
+msgctxt "#32157"
+msgid "40 sec"
+msgstr ""
+
+msgctxt "#32158"
+msgid "45 sec"
+msgstr ""
+
+msgctxt "#32159"
+msgid "50 sec"
+msgstr ""
+
+msgctxt "#32160"
+msgid "60 sec"
+msgstr ""
+
+msgctxt "#32161"
+msgid "120 sec"
+msgstr ""
+
+msgctxt "#32162"
+msgid "180 sec"
+msgstr ""
+
+msgctxt "#32163"
+msgid "240 sec"
+msgstr ""
+
+msgctxt "#32200"
 msgid "Notifications"
 msgstr ""
 
-msgctxt "#52001"
+msgctxt "#32201"
 msgid "Enable launch notification"
 msgstr ""
 
-msgctxt "#52002"
+msgctxt "#32202"
 msgid "Enable ping or waiting counter notifications"
 msgstr ""
 
-msgctxt "#52003"
+msgctxt "#32203"
 msgid "Enable host up success/failure notification"
 msgstr ""
 
-msgctxt "#52004"
+msgctxt "#32204"
 msgid "Enable error notifications"
 msgstr ""
 
-msgctxt "#53000"
+msgctxt "#32300"
 msgid "Advanced settings"
 msgstr ""
 
-msgctxt "#53010"
+msgctxt "#32310"
 msgid "Host up check"
 msgstr ""
 
-msgctxt "#53011"
-msgid "Ping timeout for host up check (in seconds)"
+msgctxt "#32311"
+msgid "Ping timeout for host up check"
 msgstr ""
 
-msgctxt "#53012"
+msgctxt "#32312"
 msgid "Disable host up check via ping..."
 msgstr ""
 
-msgctxt "#53013"
-msgid "...and simply assume wake up after this timespan (in seconds)"
+msgctxt "#32313"
+msgid "...and simply assume wake up after this timespan"
 msgstr ""
 
-msgctxt "#53020"
+msgctxt "#32320"
 msgid "Continuous WOL signals"
 msgstr ""
 
-msgctxt "#53021"
+msgctxt "#32321"
 msgid "Send continuous WOL packets"
 msgstr ""
 
-msgctxt "#53022"
-msgid "Delay between packets (in seconds)"
+msgctxt "#32322"
+msgid "Delay between packets"
 msgstr ""
 
-msgctxt "#53023"
+msgctxt "#32323"
 msgid "Continue sending after Kodi returns from standby"
 msgstr ""
 
-msgctxt "#53024"
+msgctxt "#32324"
 msgid "Send only while Kodi is playing something"
 msgstr ""
 
-msgctxt "#60000"
+msgctxt "#32400"
 msgid "Waking up %s..."
 msgstr ""
 
-msgctxt "#60001"
-msgid "Waiting for %s to wake up..."
+msgctxt "#32401"
+msgid "Waiting for device(s) to wake up..."
 msgstr ""
 
-msgctxt "#60002"
+msgctxt "#32402"
 msgid "%s of %s seconds passed"
 msgstr ""
 
-msgctxt "#60003"
+msgctxt "#32403"
 msgid "%s did not wake up..."
 msgstr ""
 
-msgctxt "#60004"
+msgctxt "#32404"
 msgid "%s is awake"
 msgstr ""
 
-msgctxt "#60005"
+msgctxt "#32405"
 msgid "Ping successful, wait for %s seconds"
 msgstr ""
 
-msgctxt "#60007"
+msgctxt "#32406"
+msgid "Waiting for %s to wake up..."
+msgstr ""
+
+msgctxt "#32407"
 msgid "Launching command..."
 msgstr ""
 
-msgctxt "#60008"
+msgctxt "#32408"
 msgid "WOL packets will continue with a delay of %s seconds."
 msgstr ""
 
-msgctxt "#60011"
-msgid "%s should be awake now!"
+msgctxt "#32411"
+msgid "Device(s) should be awake now!"
 msgstr ""

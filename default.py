@@ -2,8 +2,8 @@
 
 from resources.lib import ping
 import os
-import sys
 import time
+import re
 
 import xbmc
 import xbmcaddon
@@ -14,6 +14,16 @@ addon = xbmcaddon.Addon()
 addon_id = addon.getAddonInfo('id')
 addon_name = addon.getAddonInfo('name')
 version = addon.getAddonInfo('version')
+addon_path = xbmcvfs.translatePath(addon.getAddonInfo('path'))
+language = addon.getLocalizedString
+
+
+def log(message, level=xbmc.LOGDEBUG):
+    xbmc.log('[{} {}]: {}'.format(addon_id, version, message), level)
+
+
+def notify(message, icon, ntime=3000):
+    xbmcgui.Dialog().notification(addon_name, message, icon, time=ntime)
 
 
 class DialogBG(xbmcgui.DialogProgressBG):
@@ -38,182 +48,108 @@ class DialogBG(xbmcgui.DialogProgressBG):
             self.close()
 
 
-def main(is_autostart=False):
-    xbmc.log('[{} {}]: Starting WOL script'.format(addon_id, version), xbmc.LOGDEBUG)
+def main(autostart=False):
 
-    # Read Settings
-    language = addon.getLocalizedString
-    notify = xbmcgui.Dialog().notification
-
-    # basic settings
-    macAddress = addon.getSetting("macAddress")
-    hostOrIp = addon.getSetting("hostOrIp")
+    log('Starting WOL script', level=xbmc.LOGINFO)
 
     # notification settings
     enableLaunchNotifies = True if addon.getSetting("enableLaunchNotifies").lower() == 'true' else False
     enablePingCounterNotifies = True if addon.getSetting("enablePingCounterNotifies").lower() == 'true' else False
     enableHostupNotifies = True if addon.getSetting("enableHostupNotifies").lower() == 'true' else False
-    delayHostupNotifies = int(addon.getSetting("delayHostupNotifies"))
+    delayHostupNotifies = int(re.findall('^[0-9]*', addon.getSetting("delayHostupNotifies"))[0])
 
     # advanced settings
-    pingTimeout = int(addon.getSetting("pingTimeout"))
-    hostupWaitTime = int(addon.getSetting("hostupWaitTime"))
+    pingTimeout = int(re.findall('^[0-9]*', addon.getSetting("pingTimeout"))[0])
+    hostupWaitTime = int(re.findall('^[0-9]*', addon.getSetting("hostupWaitTime"))[0])
     disablePingHostupCheck = True if addon.getSetting("disablePingHostupCheck").lower() == 'true' else False
-    continuousWol = True if addon.getSetting("continuousWol").lower() == 'true' else False
-    continuousWolDelay = int(addon.getSetting("continuousWolDelay"))
-    continuousWolAfterStandby = True if addon.getSetting("continuousWolAfterStandby").lower() == 'true' else False
-    continuousWolOnlyWhilePlaying = True if addon.getSetting("continuousWolOnlyWhilePlaying").lower() == 'true' else False
     updateVideoLibraryAfterWol = True if addon.getSetting("updateVideoLibraryAfterWol").lower() == 'true' else False
     updateMusicLibraryAfterWol = True if addon.getSetting("updateMusicLibraryAfterWol").lower() == 'true' else False
-    libraryUpdatesDelay = int(addon.getSetting("libraryUpdatesDelay"))
-
-    # if the script was called with a 3rd parameter,
-    # use the mac-address and host/ip from there
-
-    try:
-        if len(sys.argv[3]) > 0:
-            arrCustomServer = sys.argv[3].split('@')
-            hostOrIp = arrCustomServer[0]
-            macAddress = arrCustomServer[1]
-    except IndexError:
-        pass
+    libraryUpdatesDelay = int(re.findall('^[0-9]*', addon.getSetting("libraryUpdatesDelay"))[0])
 
     # Set Icons
-    iconDir = os.path.join(xbmcvfs.translatePath(addon.getAddonInfo('path')), 'resources', 'icons')
-    iconConnect = os.path.join(iconDir, 'server.png')
-    iconError = os.path.join(iconDir, 'server_error.png')
-    iconSuccess = os.path.join(iconDir, 'server_connect.png')
+    iconConnect = os.path.join(addon_path, 'resources', 'icons', 'server.png')
+    iconError = os.path.join(addon_path, 'resources', 'icons', 'server_error.png')
+    iconSuccess = os.path.join(addon_path, 'resources', 'icons', 'server_connect.png')
 
-    launchcommand = False
-    delaycommand = False
+    # Send WOL-Packets to devices, built devicelist
+    dev_list = list()
+    for dev in range(4):
+        if addon.getSetting('enabled_%s' % dev).lower() == 'true':
+            dev_list.append(dev)
+            xbmc.executebuiltin('WakeOnLan("%s")' % addon.getSetting('macAddress_%s' % dev))
+            log('WakeOnLan signal sent to MAC-Address {}'.format(addon.getSetting('macAddress_%s' % dev)))
 
-    try:
-        if len(sys.argv[1]) > 0:
-            launchcommand = True
-            if str(sys.argv[2]) == 'True':
-                delaycommand = True
-    except IndexError:
-        pass
+            # Send Connection Notification
+            if enableLaunchNotifies: notify(language(32400) % (addon.getSetting('hostOrIp_%s' % dev)), iconConnect)
+            xbmc.sleep(3000)
 
-    # Launch additional command passed with parameters, if it should not be delayed to after successful wakeup
-    if launchcommand and not delaycommand:
-        xbmc.executebuiltin(sys.argv[1])
-
-    # Send WOL-Packet
-    xbmc.executebuiltin('WakeOnLan("%s")' % macAddress)
-    xbmc.log('[{} {}]: WakeOnLan signal sent to MAC-Address {}'.format(addon_id, version, macAddress), xbmc.LOGDEBUG)
-
-    # Send Connection Notification
-    if enableLaunchNotifies:
-        notify(addon_name, language(60000) % hostOrIp, time=3000, icon=iconConnect)
-        xbmc.sleep(3000)
-
-    # Determine wakeup-success
-    hostupConfirmed = False
     if disablePingHostupCheck:
         # with this setting, we just wait for "hostupWaitTime" seconds and assume a successful wakeup then.
         timecount = 1
 
-        dbg = DialogBG(language(60001) % hostOrIp,
-                       language(60002) % (timecount, hostupWaitTime), enablePingCounterNotifies)
+        dbg = DialogBG(language(32401),
+                       language(32402) % (timecount, hostupWaitTime), enablePingCounterNotifies)
         while timecount <= hostupWaitTime:
             xbmc.sleep(1000)
-            dbg.bg_progress(timecount * 100 // hostupWaitTime, language(60002) % (timecount, hostupWaitTime))
+            dbg.bg_progress(timecount * 100 // hostupWaitTime, language(32402) % (timecount, hostupWaitTime))
             timecount = timecount + 1
         dbg.bg_close()
 
         if enableHostupNotifies:
-            notify(addon_name, language(60011) % hostOrIp, icon=iconSuccess)
-
-        hostupConfirmed = True
+            notify(language(32411), iconSuccess)
     else:
-        # otherwise we determine the success by pinging (default behaviour)
-        success = False
-        timecount = int(time.time())
-        now = timecount
 
-        dbg = DialogBG(language(60001) % hostOrIp,
-                       language(60002) % (now - timecount, pingTimeout), enablePingCounterNotifies)
-        while now - timecount <= pingTimeout:
-            success = ping.ping_ip(hostOrIp)
-            now = int(time.time())
-            if not success:
-                dbg.bg_progress((now - timecount) * 100 // pingTimeout,
-                                language(60002) % (now - timecount, pingTimeout))
-            else:
-                xbmc.log('last ping was successful, {} secs needed'.format(now - timecount), xbmc.LOGDEBUG)
-                if delayHostupNotifies > 0:
-                    xbmc.log('delay wake up notification for {} secs'.format(delayHostupNotifies), xbmc.LOGDEBUG)
-                    steps = delayHostupNotifies
-                    while steps >= 0:
-                        xbmc.sleep(1000)
-                        dbg.bg_progress((delayHostupNotifies - steps) * 100 // delayHostupNotifies,
-                                        language(60005) % (delayHostupNotifies - (delayHostupNotifies - steps)))
-                        steps -= 1
-                hostupConfirmed = True
-                break
+        # otherwise we determine the success by pinging (default behaviour)
+
+        timecount = int(time.time())
+        dbg = DialogBG(language(32401),
+                       language(32402) % (int(time.time()) - timecount, pingTimeout), enablePingCounterNotifies)
+
+        while len(dev_list) > 0 and int(time.time()) - timecount <= pingTimeout:
+
+            while int(time.time()) - timecount <= pingTimeout:
+                for dev in dev_list:
+                    if ping.ping_ip(addon.getSetting('hostOrIp_%s' % dev)):
+                        log('last ping successful, %s needed %d secs' % (addon.getSetting('hostOrIp_%s' % dev),
+                                                                         (int(time.time()) - timecount)))
+                        notify(language(32404) % addon.getSetting('hostOrIp_%s' % dev), iconSuccess)
+                        dev_list.remove(dev)
+                        xbmc.sleep(3000)
+
+                if len(dev_list) == 0: break
+                dbg.bg_progress((int(time.time()) - timecount) * 100 // pingTimeout,
+                                language(32402) % (int(time.time()) - timecount, pingTimeout))
+                xbmc.sleep(1000)
+
         dbg.bg_close()
 
-        if enableHostupNotifies:
-            if not success:
-                notify(addon_name, language(60003) % hostOrIp, icon=iconError)
-            else:
-                notify(addon_name, language(60004) % hostOrIp, icon=iconSuccess)
+        # notify of unsuccessable wakeups
+        for dev in dev_list:
+            notify(language(32403) % (addon.getSetting('hostOrIp_%s' % dev)), iconError)
+            xbmc.sleep(3000)
+
+        if delayHostupNotifies > 0:
+            log('delay wake up notification for %d secs' % delayHostupNotifies)
+            xbmc.sleep(delayHostupNotifies * 1000)
 
     # Things to perform after successful wake-up
-    if hostupConfirmed:
 
-        # Launch additional command passed with parameters, if it should be delayed to after successful wakeup
-        if launchcommand and delaycommand:
-            if enableHostupNotifies:
-                notify(language(60004) % hostOrIp, language(60007), icon=iconSuccess)
-            xbmc.sleep(1000)
-            xbmc.executebuiltin(sys.argv[1])
+    # Initiate XBMC-library-updates, if we are in autostart and it is set in the addon.
+    if autostart:
 
-        # Initiate XBMC-library-updates, if we are in autostart and it is set in the addon.
-        if is_autostart:
+        if (updateVideoLibraryAfterWol or updateMusicLibraryAfterWol) and (
+                libraryUpdatesDelay > 0):
+            xbmc.sleep(libraryUpdatesDelay * 1000)
 
-            if (updateVideoLibraryAfterWol or updateMusicLibraryAfterWol) and (
-                    libraryUpdatesDelay > 0):
-                xbmc.sleep(libraryUpdatesDelay * 1000)
+        if updateVideoLibraryAfterWol:
+            log('Initiating Video Library Update')
+            xbmc.executebuiltin('UpdateLibrary("video")')
 
-            if updateVideoLibraryAfterWol:
-                xbmc.log('[{} {}]: Initiating Video Library Update'.format(addon_id, version), xbmc.LOGDEBUG)
-                xbmc.executebuiltin('UpdateLibrary("video")')
+        if updateMusicLibraryAfterWol:
+            log('Initiating Music Library Update')
+            xbmc.executebuiltin('UpdateLibrary("music")')
 
-            if updateMusicLibraryAfterWol:
-                xbmc.log('[{} {}]: Initiating Music Library Update'.format(addon_id, version), xbmc.LOGDEBUG)
-                xbmc.executebuiltin('UpdateLibrary("music")')
-
-    # Continue sending WOL-packets, if configured in the settings
-    if continuousWol:
-        xbmc.sleep(5000)
-
-        if enableLaunchNotifies:
-            # Send Notification regarding continuous WOL-packets
-            notify(language(53020), language(60008) % continuousWolDelay, icon=iconSuccess)
-
-        # the previousTime-functionality to stop continuous WOL-packets after XBMC returns from standby was
-        # suggested by XBMC-forum-user "jandias" (THANKS!)
-        previousTime = int(time.time())
-        countingSeconds = 0
-        while not xbmc.Monitor().abortRequested():
-            if (not continuousWolAfterStandby) and (int(time.time()) - previousTime > 5):
-                break
-            else:
-                previousTime = int(time.time())
-                xbmc.sleep(1000)
-                if countingSeconds == continuousWolDelay:
-
-                    if (not continuousWolOnlyWhilePlaying) or xbmc.Player().isPlaying():
-                        xbmc.executebuiltin('WakeOnLan("%s")' % macAddress)
-                        xbmc.log('[{} {}]: WakeOnLan signal sent to MAC-Address {}'.format(addon_id, version, macAddress),
-                                xbmc.LOGDEBUG)
-                        countingSeconds = 0
-                else:
-                    countingSeconds += 1
-
-    xbmc.log('[{} {}]: Closing WOL script'.format(addon_id, version), xbmc.LOGDEBUG)
+    log('Closing WOL script')
     return
 
 
