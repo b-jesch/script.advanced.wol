@@ -123,9 +123,9 @@ def main(autostart=False):
         dbg.bg_close()
 
         # notify of unsuccessable wakeups
-        for dev in dev_list:
-            notify(language(32403) % (addon.getSetting('hostOrIp_%s' % dev)), iconError)
-            xbmc.sleep(3000)
+        devices = list()
+        for dev in dev_list: devices.append(addon.getSetting('hostOrIp_%s' % dev))
+        if len(devices) > 0: notify(language(32403) % (', '.join(devices)), iconError)
 
         if delayHostupNotifies > 0:
             log('delay wake up notification for %d secs' % delayHostupNotifies)
@@ -148,7 +148,7 @@ def main(autostart=False):
             log('Initiating Music Library Update')
             xbmc.executebuiltin('UpdateLibrary("music")')
 
-    log('Closing WOL script')
+    log('Closing WOL script', xbmc.LOGINFO)
     return
 
 
