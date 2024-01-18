@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<addon id="script.advanced.wol" name="Advanced Wake On Lan" version="3.0.9+matrix" provider-name="Birger Jesch, forked from mandark">
+<addon id="script.advanced.wol" name="Advanced Wake On Lan" version="3.1.0+matrix" provider-name="Birger Jesch, forked from mandark">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
     </requires>
@@ -21,5 +21,7 @@
     <assets>
       <icon>icon.png</icon>
     </assets>
+    <lifecyclestate type="deprecated" lang="en_GB">The support of this Addon has ended. Please update to "Advanced WOL NG" and update your settings.</lifecyclestate>
+    <lifecyclestate type="deprecated" lang="de_DE">Der Support für dieses Addon wurde eingestellt. Bitte auf "Advanced WOL NG" und Einstellungen des Addons überprüfen.</lifecyclestate>
     </extension>
 </addon>
