@@ -1,49 +1,317 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<settings>
-	<category label="32000">
-		<setting id="separator" type="lsep" label="32010" />
-		<setting id="enabled_1" type="bool" label="32005" default="true" />
-		<setting id="hostOrIp_1" type="text" label="32002" default="My Server 1" enable="eq(-1,true)" />
-		<setting id="macAddress_1" type="text" label="32001" default="FF:FF:FF:FF:FF:FF" enable="eq(-2,true)" />
-		<setting id="separator" type="lsep" label="32011" />
-		<setting id="enabled_2" type="bool" label="32005" default="false" />
-		<setting id="hostOrIp_2" type="text" label="32002" default="My Server 2" enable="eq(-1,true)" />
-		<setting id="macAddress_2" type="text" label="32001" default="FF:FF:FF:FF:FF:FF" enable="eq(-2,true)" />
-		<setting id="separator" type="lsep" label="32012" />
-		<setting id="enabled_3" type="bool" label="32005" default="false" />
-		<setting id="hostOrIp_3" type="text" label="32002" default="My Server 3" enable="eq(-1,true)" />
-		<setting id="macAddress_3" type="text" label="32001" default="FF:FF:FF:FF:FF:FF" enable="eq(-2,true)" />
-		<setting id="separator" type="lsep" label="32013" />
-		<setting id="enabled_4" type="bool" label="32005" default="false" />
-		<setting id="hostOrIp_4" type="text" label="32002" default="My Server 4" enable="eq(-1,true)" />
-		<setting id="macAddress_4" type="text" label="32001" default="FF:FF:FF:FF:FF:FF" enable="eq(-2,true)" />
-	</category>
-	<category label="32100">
-		<setting id="separator" type="lsep" label="32101"/>
-		<setting type="sep"/>
-		<setting id="separator" type="lsep" label="32110"/>
-		<setting id="autostart" type="bool" label="32111"  default="false" />
-		<setting id="wolDelayOnLaunch" type="labelenum" label="32112" lvalues="32150|32151|32152|32153|32154" default="32150" enable="eq(-1,true)" />
-		<setting type="sep"/>
-		<setting id="separator" type="lsep" label="32120"/>
-		<setting id="wolAfterStandby" type="bool" label="32121" default="false" enable="eq(-4,true)" />
-		<setting id="wolDelayAfterStandby" type="labelenum" label="32122" lvalues="32150|32151|32152|32153|32154" default="32150" enable="eq(-1,true)" />
-		<setting type="sep"/>
-		<setting id="separator" type="lsep" label="32200"/>
-		<setting id="enableLaunchNotifies" type="bool" label="32201" default="true" />
-		<setting id="enablePingCounterNotifies" type="bool" label="32202" default="true" />
-		<setting id="enableHostupNotifies" type="bool" label="32203" default="true" />
-	</category>
-	<category label="32300">
-		<setting id="separator" type="lsep" label="32310"/>
-		<setting id="pingTimeout" type="labelenum" label="32311" lvalues="32152|32154|32156|32157|32159|32160|32161|32162|32163" default="32156" enable="eq(2,false)" />
-		<setting id="delayHostupNotifies" type="labelenum" label="32134" lvalues="32150|32151|32152|32153|32154|32155|32156|32158|32160" default="32152" enable="eq(1,false)" />
-		<setting id="disablePingHostupCheck" type="bool" label="32312" default="false" />
-		<setting id="hostupWaitTime" type="labelenum" label="32313" lvalues="32152|32154|32156|32157|32159|32160|32161|32162|32163" default="32156" enable="eq(-1,true)" />
-		<setting type="sep"/>
-		<setting id="separator" type="lsep" label="32130" />
-		<setting id="updateVideoLibraryAfterWol" type="bool" label="32131" default="false" />
-		<setting id="updateMusicLibraryAfterWol" type="bool" label="32132" default="false" />
-		<setting id="libraryUpdatesDelay" type="labelenum" label="32133" lvalues="32150|32152|32154|32156|32160|32161" default="32152" />
-	</category>
+<?xml version="1.0" ?>
+<settings version="1">
+	<section id="script.advanced.wol">
+		<category id="device list" label="32000" help="">
+			<group id="1" label="32010">
+				<setting id="enabled_1" type="boolean" label="32005" help="">
+					<level>0</level>
+					<default>true</default>
+					<control type="toggle"/>
+				</setting>
+				<setting id="hostOrIp_1" type="string" label="32002" help="">
+					<level>0</level>
+					<default>My Server 1</default>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="enabled_1">true</condition>
+						</dependency>
+					</dependencies>
+					<control type="edit" format="string">
+						<heading>32002</heading>
+					</control>
+				</setting>
+				<setting id="macAddress_1" type="string" label="32001" help="">
+					<level>0</level>
+					<default>FF:FF:FF:FF:FF:FF</default>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="enabled_1">true</condition>
+						</dependency>
+					</dependencies>
+					<control type="edit" format="string">
+						<heading>32001</heading>
+					</control>
+				</setting>
+			</group>
+			<group id="2" label="32011">
+				<setting id="enabled_2" type="boolean" label="32005" help="">
+					<level>0</level>
+					<default>false</default>
+					<control type="toggle"/>
+				</setting>
+				<setting id="hostOrIp_2" type="string" label="32002" help="">
+					<level>0</level>
+					<default>My Server 2</default>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="enabled_2">true</condition>
+						</dependency>
+					</dependencies>
+					<control type="edit" format="string">
+						<heading>32002</heading>
+					</control>
+				</setting>
+				<setting id="macAddress_2" type="string" label="32001" help="">
+					<level>0</level>
+					<default>FF:FF:FF:FF:FF:FF</default>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="enabled_2">true</condition>
+						</dependency>
+					</dependencies>
+					<control type="edit" format="string">
+						<heading>32001</heading>
+					</control>
+				</setting>
+			</group>
+			<group id="3" label="32012">
+				<setting id="enabled_3" type="boolean" label="32005" help="">
+					<level>0</level>
+					<default>false</default>
+					<control type="toggle"/>
+				</setting>
+				<setting id="hostOrIp_3" type="string" label="32002" help="">
+					<level>0</level>
+					<default>My Server 3</default>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="enabled_3">true</condition>
+						</dependency>
+					</dependencies>
+					<control type="edit" format="string">
+						<heading>32002</heading>
+					</control>
+				</setting>
+				<setting id="macAddress_3" type="string" label="32001" help="">
+					<level>0</level>
+					<default>FF:FF:FF:FF:FF:FF</default>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="enabled_3">true</condition>
+						</dependency>
+					</dependencies>
+					<control type="edit" format="string">
+						<heading>32001</heading>
+					</control>
+				</setting>
+			</group>
+			<group id="4" label="32013">
+				<setting id="enabled_4" type="boolean" label="32005" help="">
+					<level>0</level>
+					<default>false</default>
+					<control type="toggle"/>
+				</setting>
+				<setting id="hostOrIp_4" type="string" label="32002" help="">
+					<level>0</level>
+					<default>My Server 4</default>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="enabled_4">true</condition>
+						</dependency>
+					</dependencies>
+					<control type="edit" format="string">
+						<heading>32002</heading>
+					</control>
+				</setting>
+				<setting id="macAddress_4" type="string" label="32001" help="">
+					<level>0</level>
+					<default>FF:FF:FF:FF:FF:FF</default>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="enabled_4">true</condition>
+						</dependency>
+					</dependencies>
+					<control type="edit" format="string">
+						<heading>32001</heading>
+					</control>
+				</setting>
+			</group>
+		</category>
+		<category id="autostart" label="32100" help="">
+			<group id="1" label="32101"/>
+			<group id="2"/>
+			<group id="3" label="32110">
+				<setting id="autostart" type="boolean" label="32111" help="">
+					<level>0</level>
+					<default>false</default>
+					<control type="toggle"/>
+				</setting>
+				<setting id="wolDelayOnLaunch" type="string" label="32112" help="">
+					<level>0</level>
+					<default>0</default>
+					<constraints>
+						<options>
+							<option label="32150">0</option>
+							<option label="32151">5</option>
+							<option label="32152">10</option>
+							<option label="32153">15</option>
+							<option label="32154">20</option>
+						</options>
+					</constraints>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="autostart">true</condition>
+						</dependency>
+					</dependencies>
+					<control type="spinner" format="string"/>
+				</setting>
+			</group>
+			<group id="4"/>
+			<group id="5" label="32120">
+				<setting id="wolAfterStandby" type="boolean" label="32121" help="">
+					<level>0</level>
+					<default>false</default>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="autostart">true</condition>
+						</dependency>
+					</dependencies>
+					<control type="toggle"/>
+				</setting>
+				<setting id="wolDelayAfterStandby" type="string" label="32122" help="">
+					<level>0</level>
+					<default>0</default>
+					<constraints>
+						<options>
+							<option label="32150">0</option>
+							<option label="32151">5</option>
+							<option label="32152">10</option>
+							<option label="32153">15</option>
+							<option label="32154">20</option>
+						</options>
+					</constraints>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="wolAfterStandby">true</condition>
+						</dependency>
+					</dependencies>
+					<control type="spinner" format="string"/>
+				</setting>
+			</group>
+			<group id="6"/>
+			<group id="7" label="32200">
+				<setting id="enableLaunchNotifies" type="boolean" label="32201" help="">
+					<level>0</level>
+					<default>true</default>
+					<control type="toggle"/>
+				</setting>
+				<setting id="enablePingCounterNotifies" type="boolean" label="32202" help="">
+					<level>0</level>
+					<default>true</default>
+					<control type="toggle"/>
+				</setting>
+				<setting id="enableHostupNotifies" type="boolean" label="32203" help="">
+					<level>0</level>
+					<default>true</default>
+					<control type="toggle"/>
+				</setting>
+			</group>
+		</category>
+		<category id="advanced settings" label="32300" help="">
+			<group id="1" label="32310">
+				<setting id="pingTimeout" type="string" label="32311" help="">
+					<level>0</level>
+					<default>30</default>
+					<constraints>
+						<options>
+							<option label="32152">10</option>
+							<option label="32154">20</option>
+							<option label="32156">30</option>
+							<option label="32157">40</option>
+							<option label="32159">50</option>
+							<option label="32160">60</option>
+							<option label="32161">120</option>
+							<option label="32162">180</option>
+							<option label="32163">240</option>
+						</options>
+					</constraints>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="disablePingHostupCheck">false</condition>
+						</dependency>
+					</dependencies>
+					<control type="spinner" format="string"/>
+				</setting>
+				<setting id="delayHostupNotifies" type="string" label="32134" help="">
+					<level>0</level>
+					<default>10</default>
+					<constraints>
+						<options>
+							<option label="32150">0</option>
+							<option label="32151">5</option>
+							<option label="32152">10</option>
+							<option label="32153">15</option>
+							<option label="32154">20</option>
+							<option label="32155">25</option>
+							<option label="32156">30</option>
+							<option label="32158">45</option>
+							<option label="32160">60</option>
+						</options>
+					</constraints>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="disablePingHostupCheck">false</condition>
+						</dependency>
+					</dependencies>
+					<control type="spinner" format="string"/>
+				</setting>
+				<setting id="disablePingHostupCheck" type="boolean" label="32312" help="">
+					<level>0</level>
+					<default>false</default>
+					<control type="toggle"/>
+				</setting>
+				<setting id="hostupWaitTime" type="string" label="32313" help="">
+					<level>0</level>
+					<default>30</default>
+					<constraints>
+						<options>
+							<option label="32152">10</option>
+							<option label="32154">20</option>
+							<option label="32156">30</option>
+							<option label="32157">40</option>
+							<option label="32159">50</option>
+							<option label="32160">60</option>
+							<option label="32161">120</option>
+							<option label="32162">180</option>
+							<option label="32163">240</option>
+						</options>
+					</constraints>
+					<dependencies>
+						<dependency type="enable">
+							<condition operator="is" setting="disablePingHostupCheck">true</condition>
+						</dependency>
+					</dependencies>
+					<control type="spinner" format="string"/>
+				</setting>
+			</group>
+			<group id="2"/>
+			<group id="3" label="32130">
+				<setting id="updateVideoLibraryAfterWol" type="boolean" label="32131" help="">
+					<level>0</level>
+					<default>false</default>
+					<control type="toggle"/>
+				</setting>
+				<setting id="updateMusicLibraryAfterWol" type="boolean" label="32132" help="">
+					<level>0</level>
+					<default>false</default>
+					<control type="toggle"/>
+				</setting>
+				<setting id="libraryUpdatesDelay" type="string" label="32133" help="">
+					<level>0</level>
+					<default>10</default>
+					<constraints>
+						<options>
+							<option label="32150">0</option>
+							<option label="32152">10</option>
+							<option label="32154">20</option>
+							<option label="32156">30</option>
+							<option label="32160">60</option>
+							<option label="32161">120</option>
+						</options>
+					</constraints>
+					<control type="spinner" format="string"/>
+				</setting>
+			</group>
+		</category>
+	</section>
 </settings>

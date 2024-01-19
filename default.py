@@ -3,7 +3,6 @@
 from resources.lib import ping
 import os
 import time
-import re
 
 import xbmc
 import xbmcaddon
@@ -56,15 +55,15 @@ def main(autostart=False):
     enableLaunchNotifies = True if addon.getSetting("enableLaunchNotifies").lower() == 'true' else False
     enablePingCounterNotifies = True if addon.getSetting("enablePingCounterNotifies").lower() == 'true' else False
     enableHostupNotifies = True if addon.getSetting("enableHostupNotifies").lower() == 'true' else False
-    delayHostupNotifies = int(re.findall('^[0-9]*', addon.getSetting("delayHostupNotifies"))[0])
+    delayHostupNotifies = int(addon.getSetting("delayHostupNotifies"))
 
     # advanced settings
-    pingTimeout = int(re.findall('^[0-9]*', addon.getSetting("pingTimeout"))[0])
-    hostupWaitTime = int(re.findall('^[0-9]*', addon.getSetting("hostupWaitTime"))[0])
+    pingTimeout = int(addon.getSetting("pingTimeout"))
+    hostupWaitTime = int(addon.getSetting("hostupWaitTime"))
     disablePingHostupCheck = True if addon.getSetting("disablePingHostupCheck").lower() == 'true' else False
     updateVideoLibraryAfterWol = True if addon.getSetting("updateVideoLibraryAfterWol").lower() == 'true' else False
     updateMusicLibraryAfterWol = True if addon.getSetting("updateMusicLibraryAfterWol").lower() == 'true' else False
-    libraryUpdatesDelay = int(re.findall('^[0-9]*', addon.getSetting("libraryUpdatesDelay"))[0])
+    libraryUpdatesDelay = int(addon.getSetting("libraryUpdatesDelay"))
 
     # Set Icons
     iconConnect = os.path.join(addon_path, 'resources', 'icons', 'server.png')
@@ -122,14 +121,14 @@ def main(autostart=False):
 
         dbg.bg_close()
 
+        if delayHostupNotifies > 0:
+            log('delay wake up notification for %d secs' % delayHostupNotifies)
+            xbmc.sleep(delayHostupNotifies * 1000)
+
         # notify of unsuccessable wakeups
         devices = list()
         for dev in dev_list: devices.append(addon.getSetting('hostOrIp_%s' % dev))
         if len(devices) > 0: notify(language(32403) % (', '.join(devices)), iconError)
-
-        if delayHostupNotifies > 0:
-            log('delay wake up notification for %d secs' % delayHostupNotifies)
-            xbmc.sleep(delayHostupNotifies * 1000)
 
     # Things to perform after successful wake-up
 

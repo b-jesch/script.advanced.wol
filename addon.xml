@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<addon id="script.advanced.wol" name="Advanced WOL NG" version="4.0.0+matrix" provider-name="Birger Jesch">
+<addon id="script.advanced.wol" name="Advanced WOL NG" version="4.0.1+matrix" provider-name="Birger Jesch">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
     </requires>
@@ -8,8 +8,10 @@
     <extension point="xbmc.addon.metadata">
         <summary lang="en">Wake up to 4 sleeping devices (e.g. NAS, Server, etc.) using builtin WOL</summary>
         <summary lang="de">Weckt bis zu 4 Geräte (NAS, Server usw.) unter Benutzung des eingebauten WOL auf</summary>
-        <description lang="en">Sends a WOL magic packet to up to four remote devices using its ethernet MAC address and displays a notification if and when the devices are available.</description>
-        <description lang="de">Sendet ein WOL-Magic-Paket an bis zu vier entfernte Geräte über dessen Ethernet-MAC-Adresse und zeigt eine Benachrichtigung an, ob und wann diese Geräte verfügbar sind.</description>
+        <description lang="en">Sends a WOL magic packet to up to four remote devices using its ethernet MAC address and displays a notification if and when the devices are available.
+[CR][CR][COLOR red]Attention: This Addon mess up your previous settings! Reconfigure them![/COLOR]</description>
+        <description lang="de">Sendet ein WOL-Magic-Paket an bis zu vier entfernte Geräte über dessen Ethernet-MAC-Adresse und zeigt eine Benachrichtigung an, ob und wann diese Geräte verfügbar sind.
+[CR][CR][COLOR red]Dieses Addon überschreibt die Einstellungen der vorhergehenden Addons! Bitte neu konfigurieren![/COLOR]</description>
         <disclaimer lang="en">Uses Kodi builtin command &quot;WakeOnLan&quot; to send the wakeup packet</disclaimer>
         <disclaimer lang="de">Verwendet den in Kodi eingebauten Befehl &quot;WakeOnLan&quot; zum Senden des Wakeup-Pakets</disclaimer>
         <platform>all</platform>
