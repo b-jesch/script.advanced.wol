@@ -237,15 +237,16 @@
 					<default>10</default>
 					<constraints>
 						<options>
-							<option label="32150">0</option>
-							<option label="32151">5</option>
 							<option label="32152">10</option>
-							<option label="32153">15</option>
 							<option label="32154">20</option>
-							<option label="32155">25</option>
 							<option label="32156">30</option>
-							<option label="32158">45</option>
+							<option label="32157">40</option>
+							<option label="32159">50</option>
 							<option label="32160">60</option>
+							<option label="32161">120</option>
+							<option label="32162">180</option>
+							<option label="32163">240</option>
+							<option label="32164">300</option>
 						</options>
 					</constraints>
 					<dependencies>

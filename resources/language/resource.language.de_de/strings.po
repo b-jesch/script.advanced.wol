@@ -153,6 +153,10 @@ msgctxt "#32163"
 msgid "240 sec"
 msgstr "240 sec"
 
+msgctxt "#32164"
+msgid "300 sec"
+msgstr "300 sec"
+
 msgctxt "#32200"
 msgid "Notifications"
 msgstr "Benachrichtigungen"
