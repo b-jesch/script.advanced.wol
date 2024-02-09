@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<addon id="script.advanced.wol" name="Advanced WOL NG" version="4.0.2+matrix" provider-name="Birger Jesch">
+<addon id="script.advanced.wol" name="Advanced WOL NG" version="4.0.3+matrix" provider-name="Birger Jesch">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
     </requires>
