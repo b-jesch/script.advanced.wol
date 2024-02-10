@@ -123,12 +123,20 @@ def main(autostart=False):
 
         if delayHostupNotifies > 0:
             log('delay wake up notification for %d secs' % delayHostupNotifies)
-            xbmc.sleep(delayHostupNotifies * 1000)
+            timecount = int(time.time())
+            dbg = DialogBG(language(32323),
+                           language(32402) % (int(time.time()) - timecount, delayHostupNotifies), True)
+            while int(time.time()) - timecount < delayHostupNotifies:
+                dbg.bg_progress((int(time.time()) - timecount) * 100 // delayHostupNotifies,
+                                language(32402) % (int(time.time()) - timecount, delayHostupNotifies))
+                xbmc.sleep(1000)
 
         # notify of unsuccessable wakeups
         devices = list()
         for dev in dev_list: devices.append(addon.getSetting('hostOrIp_%s' % dev))
-        if len(devices) > 0: notify(language(32403) % (', '.join(devices)), iconError)
+        if len(devices) > 1: notify(language(32403) % (', '.join(devices)), iconError)
+        elif len(devices) == 1: notify(language(32405) % (', '.join(devices)), iconError)
+        else: notify(language(32411), iconSuccess)
 
     # Things to perform after successful wake-up
 

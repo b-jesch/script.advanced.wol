@@ -206,11 +206,15 @@ msgid "%s of %s seconds passed"
 msgstr ""
 
 msgctxt "#32403"
-msgid "%s did not wake up"
+msgid "%s don't wake up"
 msgstr ""
 
 msgctxt "#32404"
 msgid "%s is awake"
+msgstr ""
+
+msgctxt "#32405"
+msgid "%s did not wake up"
 msgstr ""
 
 msgctxt "#32411"

@@ -198,8 +198,8 @@ msgid "Delay between packets"
 msgstr "Verzögerung zwischen den Paketen"
 
 msgctxt "#32323"
-msgid "Continue sending after Kodi returns from standby"
-msgstr "Sende dauerhaft nach der Rückkehr aus dem Standby"
+msgid "Wait for full availability"
+msgstr "Warte auf vollständige Verfügbarkeit"
 
 msgctxt "#32400"
 msgid "Waking up %s"
@@ -214,12 +214,16 @@ msgid "%s of %s seconds passed"
 msgstr "%s von %s Sekunden vergangen"
 
 msgctxt "#32403"
-msgid "%s did not wake up"
-msgstr "%s wacht nicht auf"
+msgid "%s don't wake up"
+msgstr "%s wachen nicht auf"
 
 msgctxt "#32404"
 msgid "%s is awake"
 msgstr "%s ist verfügbar"
+
+msgctxt "#32405"
+msgid "%s did not wake up"
+msgstr "%s wacht nicht auf"
 
 msgctxt "#32411"
 msgid "Device(s) should be awake now!"
