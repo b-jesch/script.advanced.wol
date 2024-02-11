@@ -130,6 +130,7 @@ def main(autostart=False):
                 dbg.bg_progress((int(time.time()) - timecount) * 100 // delayHostupNotifies,
                                 language(32402) % (int(time.time()) - timecount, delayHostupNotifies))
                 xbmc.sleep(1000)
+            dbg.bg_close()
 
         # notify of unsuccessable wakeups
         devices = list()
