@@ -1,0 +1,222 @@
+# XBMC Media Center language file
+# Addon Name: Advanced WOL NG
+# Addon id: script.advanced.wol
+# Addon version: 4.0.4+matrix
+# Addon Provider: Birger Jesch
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC-Addons\n"
+"Language-Team: LANGUAGE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgctxt "#32000"
+msgid "Device list"
+msgstr "Elenco Dispositivi"
+
+msgctxt "#32001"
+msgid "Ethernet MAC address"
+msgstr "Indirizzo MAC Ethernet"
+
+msgctxt "#32002"
+msgid "IP address or device name"
+msgstr "Indirizzo IP o nome del Dispositivo"
+
+msgctxt "#32005"
+msgid "send WOL"
+msgstr "Invia WOL"
+
+msgctxt "#32010"
+msgid "Device #1"
+msgstr "Dispositivo #1"
+
+msgctxt "#32011"
+msgid "Device #2"
+msgstr "Dispositivo #2"
+
+msgctxt "#32012"
+msgid "Device #3"
+msgstr "Dispositivo #3"
+
+msgctxt "#320013"
+msgid "Device #4"
+msgstr "Dispositivo #4"
+
+msgctxt "#32100"
+msgid "Autostart"
+msgstr "Avvio Automatico"
+
+msgctxt "#32101"
+msgid "NOTE: Changing these settings requires a Kodi Restart!"
+msgstr "NOTA: La modifica delle impostazioni richiede un riavvio di Kodi!"
+
+msgctxt "#32110"
+msgid "Wake on Kodi Launch"
+msgstr "Attiva all'avvio di Kodi"
+
+msgctxt "#32111"
+msgid "Activate 'wake on launch'"
+msgstr "Attiva 'WOL all'avvio'"
+
+msgctxt "#32112"
+msgid "Delay WOL signal on 'wake on launch'"
+msgstr "Ritarda segnale WOL su 'WOL all'avvio''"
+
+msgctxt "#32120"
+msgid "Wake on return from Standby"
+msgstr "Riattivazione su uscita Standby"
+
+msgctxt "#32121"
+msgid "Activate 'wake after standby'"
+msgstr "Attiva 'WOL su uscita standby'"
+
+msgctxt "#32122"
+msgid "Delay WOL signal on 'wake after standby'"
+msgstr "Ritarda segnale WOL su 'WOL su uscita standby'"
+
+msgctxt "#32130"
+msgid "Update libraries (only auto start)"
+msgstr "Aggiorna librerie (Esclusivamente con avvio automatico)"
+
+msgctxt "#32131"
+msgid "Update video library"
+msgstr "Aggiorna libreria video"
+
+msgctxt "#32132"
+msgid "Update music library"
+msgstr "Aggiorna libreria musica"
+
+msgctxt "#32133"
+msgid "Delay library updates"
+msgstr "Ritardare gli aggiornamenti della libreria"
+
+msgctxt "#32134"
+msgid "Delay host up notification"
+msgstr "Ritarda la notifica HOST attivo"
+
+msgctxt "#32150"
+msgid "0 sec (off)"
+msgstr "0 sec (spento)"
+
+msgctxt "#32151"
+msgid "5 sec"
+msgstr "5 sec"
+
+msgctxt "#32152"
+msgid "10 sec"
+msgstr "10 sec"
+
+msgctxt "#32153"
+msgid "15 sec"
+msgstr "15 sec"
+
+msgctxt "#32154"
+msgid "20 sec"
+msgstr "20 sec"
+
+msgctxt "#32155"
+msgid "25 sec"
+msgstr "25 sec"
+
+msgctxt "#32156"
+msgid "30 sec"
+msgstr "30 sec"
+
+msgctxt "#32157"
+msgid "40 sec"
+msgstr "40 sec"
+
+msgctxt "#32158"
+msgid "45 sec"
+msgstr "45 sec"
+
+msgctxt "#32159"
+msgid "50 sec"
+msgstr "50 sec"
+
+msgctxt "#32160"
+msgid "60 sec"
+msgstr "60 sec"
+
+msgctxt "#32161"
+msgid "120 sec"
+msgstr "120 sec"
+
+msgctxt "#32162"
+msgid "180 sec"
+msgstr "180 sec"
+
+msgctxt "#32163"
+msgid "240 sec"
+msgstr "240 sec"
+
+msgctxt "#32164"
+msgid "300 sec"
+msgstr "300 sec"
+
+msgctxt "#32200"
+msgid "Notifications"
+msgstr "Notifiche"
+
+msgctxt "#32201"
+msgid "Enable launch notification"
+msgstr "Abilita la notifica di Avvio"
+
+msgctxt "#32202"
+msgid "Enable ping or waiting counter notifications"
+msgstr "Abilita ping o contatore di attesa"
+
+msgctxt "#32203"
+msgid "Enable host up success/failure notification"
+msgstr "Abilita la notifica HOST Attivo/disattivo"
+
+msgctxt "#32300"
+msgid "Advanced settings"
+msgstr "Impostazioni Avanzate"
+
+msgctxt "#32310"
+msgid "Host up check"
+msgstr "Controllo HOST Attivo/Disattivo"
+
+msgctxt "#32311"
+msgid "Ping timeout for host up check"
+msgstr "Timeout del ping per il controllo dell'HOST Attivo"
+
+msgctxt "#32312"
+msgid "Disable host up check via ping..."
+msgstr "Disabilita controllo HOST Attivo tramite ping..."
+
+msgctxt "#32313"
+msgid "...and simply assume wake up after this timespan"
+msgstr "...e presupponi l'HOST sia online dopo questo tempo"
+
+msgctxt "#32400"
+msgid "Waking up %s"
+msgstr "Attivando %s"
+
+msgctxt "#32401"
+msgid "Waiting for device(s) to wake up"
+msgstr "In attesa che il Dispositivo(i) si Attivino"
+
+msgctxt "#32402"
+msgid "%s of %s seconds passed"
+msgstr "%s di %s secondi trascorsi"
+
+msgctxt "#32403"
+msgid "%s don't wake up"
+msgstr "%s Non Attivare"
+
+msgctxt "#32404"
+msgid "%s is awake"
+msgstr "%s Attivo"
+
+msgctxt "#32405"
+msgid "%s did not wake up"
+msgstr "%s Non si è Attivato"
+
+msgctxt "#32411"
+msgid "Device(s) should be awake now!"
+msgstr "Il dispositivo(i) dovrebbero essere Attivi ora!"
