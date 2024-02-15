@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<addon id="script.advanced.wol" name="Advanced WOL NG" version="4.0.4+matrix" provider-name="Birger Jesch">
+<addon id="script.advanced.wol" name="Advanced WOL NG" version="4.0.5+matrix" provider-name="Birger Jesch">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
     </requires>
@@ -8,12 +8,16 @@
     <extension point="xbmc.addon.metadata">
         <summary lang="en">Wake up to 4 sleeping devices (e.g. NAS, Server, etc.) using builtin WOL</summary>
         <summary lang="de">Weckt bis zu 4 Geräte (NAS, Server usw.) unter Benutzung des eingebauten WOL auf</summary>
+        <summary lang="it">Attiva fino a 4 dispositivi inattivi (ad esempio NAS, server, ecc.) utilizzando il WOL integrato</summary>
         <description lang="en">Sends a WOL magic packet to up to four remote devices using its ethernet MAC address and displays a notification if and when the devices are available.
 [CR][CR][COLOR red]Attention: This Version mess up your previous settings! Reconfigure them![/COLOR]</description>
         <description lang="de">Sendet ein WOL-Magic-Paket an bis zu vier entfernte Geräte über dessen Ethernet-MAC-Adresse und zeigt eine Benachrichtigung an, ob und wann diese Geräte verfügbar sind.
 [CR][CR][COLOR red]Diese Version überschreibt die Einstellungen der vorhergehenden Addons! Bitte neu konfigurieren![/COLOR]</description>
+        <description lang="it">Invia un pacchetto Wol ad un massimo di 4 dispositivi remoti utilizzando il loro indirizzo MAC Ethernet, e visualizza una notifica se e quando i dispositivi sono disponibili.
+[CR][CR][COLOR red]Attenzione: Questa versione potrebbe modificare/corrompere le impostazioni precedenti ! Riconfigurare l'Addon ![/COLOR]</description>
         <disclaimer lang="en">Uses Kodi builtin command &quot;WakeOnLan&quot; to send the wakeup packet</disclaimer>
         <disclaimer lang="de">Verwendet den in Kodi eingebauten Befehl &quot;WakeOnLan&quot; zum Senden des Wakeup-Pakets</disclaimer>
+        <disclaimer lang="it">Utilizza il comando integrato in Kodi  &quot;WakeOnLan&quot; per inviare il pacchetto WOL</disclaimer>
         <platform>all</platform>
         <license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
         <forum>https://www.kodinerds.net/thread/76745-advanced-wol/</forum>

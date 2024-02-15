@@ -195,7 +195,7 @@ msgstr "...e presupponi l'HOST sia online dopo questo tempo"
 
 msgctxt "#32400"
 msgid "Waking up %s"
-msgstr "Attivando %s"
+msgstr "Attivo %s"
 
 msgctxt "#32401"
 msgid "Waiting for device(s) to wake up"
