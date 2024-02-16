@@ -237,6 +237,7 @@
 					<default>10</default>
 					<constraints>
 						<options>
+							<option label="32150">0</option>
 							<option label="32152">10</option>
 							<option label="32154">20</option>
 							<option label="32156">30</option>
